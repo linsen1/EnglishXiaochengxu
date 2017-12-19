@@ -1,0 +1,33 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/his/his",
+    "pages/info/info"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "每日一句英语名言",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "backgroundColor": "#F6F6F6",
+    "color": "#888888",
+    "selectedColor": "#EA4961",
+    "list": [
+      {
+        "iconPath": "images/nav/jinri0.png",
+        "selectedIconPath": "images/nav/jinri.png",
+        "pagePath": "pages/index/index",
+        "text": "今日"
+      },
+      {
+        "iconPath": "images/nav/lishi0.png",
+        "selectedIconPath": "images/nav/lishi.png",
+        "pagePath": "pages/his/his",
+        "text": "历史"
+      }
+    ]
+  }
+}

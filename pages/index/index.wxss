@@ -1,0 +1,48 @@
+/**index.wxss**/
+.container{
+  margin: 0 auto;
+  position: relative;
+  width: 98%;
+  display: flex;
+  flex-direction: column;
+  
+}
+.top{
+  width: 100%;
+}
+.BR{
+  height: 4px
+}
+.wordtext{
+  background-color: white;
+  padding: 8px;
+  font-size: 13pt;
+  text-align: left;
+  line-height: 20pt
+}
+.chinese{
+  background-color: white;
+  padding-top: 0px;
+  padding-bottom: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 13pt;
+  text-align: justify;
+  line-height: 20pt;
+}
+.xiaobian{
+  text-align: left;
+  font-size: 12pt;
+  color: #EA4961;
+  margin-top: 5px;
+  padding-left: 10px
+}
+.xiaobian_content{
+  background-color: white;
+  margin-top: 5px;
+  padding:10px; 
+  font-size: 12pt;
+  text-align: justify;
+  color: #888;
+  line-height: 18pt
+}
