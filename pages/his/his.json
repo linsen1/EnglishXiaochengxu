@@ -1,3 +1,5 @@
 {
-  "navigationBarTitleText": "历史"
+  "navigationBarTitleText": "历史",
+  "enablePullDownRefresh":true,
+  "backgroundTextStyle":"drak"
 }

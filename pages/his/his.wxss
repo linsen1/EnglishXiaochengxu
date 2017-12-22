@@ -12,13 +12,19 @@
 }
 .item{
   background-color: white;
-  height: 280px;
+  height:310px;
   text-align: center;
 }
 .englishword{
   text-align: left;
   font-size: 13pt;
   padding-left: 2px;
+  display: block;
+  text-decoration: none;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; 
+  word-wrap: normal; 
 }
 .info{
   display: flex;
@@ -37,4 +43,11 @@
  color: #EA4961;
  width: 18%;
  font-size: 10pt;
+}
+.loadingMore{
+  text-align: center;
+  height: 12pt;
+  line-height: 12pt;
+  margin-top: 8px;
+  color: #888;
 }

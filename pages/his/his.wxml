@@ -1,20 +1,20 @@
 <!--pages/his/his.wxml-->
 <view class='container'>
 
-<view wx:for="{{[1,2,3,4,5]}}" wx:key="{{item}}" >
-<view class='BR'></view>
-<view class='item'>
-<navigator url="../info/info"><image src='https://api.hlppt.com/images/2018/001.png' style='height:190px;width:100%' mode='scaleToFill'></image></navigator>
+<view wx:for="{{info}}" wx:key="{{item.id}}" >
+
+<view class='item.pic'>
+<navigator url="../info/info?id={{item.id}}"><image src='{{item.pic}}' style='width:100%'></image></navigator>
 <view class='englishword'>
-Happiness is a butterfly, which ,when pursued, is always...
+{{item.englishWord}}
 </view>
 <view class='info'>
-<view class='riqi'>2017-10-17</view>
+<view class='riqi'>{{item.created_at}}</view>
 <view class='xiangqing'>
-<navigator url="../info/info">点击阅读</navigator>
+<navigator url="../info/info?id={{item.id}}">点击阅读</navigator>
  </view>
 </view>
 </view>
 </view>
-
+<view class='loadingMore' hidden='{{loadingMoreHidden}}'>{{loadingMore}}</view>
 </view>
