@@ -19,4 +19,17 @@
   <view class='xiaobian_content'>
   {{xiaobian}}
   </view>
+  <view class='BR' style='margin-top:35px'></view>
+  <audio  src="{{audio}}" id="audio" bindended='playEnd' bindtimeupdate="MusicStart"></audio>
+  <view class='audio'>
+  <view class='controls'>
+  <image src="{{playimg}}" style='width:26px' mode='widthFix' bindtap="audioPlay"  ></image>
+  </view>
+  <view class='jindutiao'>
+  <view class='MusicProgress'>
+  <view class='bofangjindu' style='width:{{progress}}%'></view>
+  </view>
+  </view>
+  <view class='audiotime'>{{currentTime}}/{{duration}}</view>
+  </view>
 </view>

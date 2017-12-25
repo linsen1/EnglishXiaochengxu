@@ -2,6 +2,7 @@
 //获取应用实例
 const app = getApp()
 var self;
+const util = require('../../utils/util.js')
 
 Page({
   data: {
@@ -9,7 +10,45 @@ Page({
     'chineseWord': '',
     'englishWord': '',
     'xiaobian': '',
-    'id':''
+    'id':'',
+    'audio':'',
+    'progress':'0',
+    'playimg':'/images/control/play.png',
+    'currentTime':'00:00',
+    'duration':'00:00'
+  },
+  onReady:function(e){
+    this.audioCtx = wx.createAudioContext('audio');
+    
+  },
+  audioPlay: function () {
+    if (this.data.playimg =='/images/control/play.png')
+    {
+      this.audioCtx.play();
+      self.setData({
+      'playimg':'/images/control/stop.png'
+      });
+    }
+    else
+    {
+      this.audioCtx.pause()
+      self.setData({
+        'playimg': '/images/control/play.png'
+      });
+    } 
+  },
+  playEnd:function(){
+    self.setData({
+      'playimg': '/images/control/play.png'
+    });
+  },
+  MusicStart:function(e){
+    var progress = parseInt((e.detail.currentTime / e.detail.duration) * 100)
+    self.setData({
+      progress: progress,
+      currentTime: util.formatSecond(e.detail.currentTime.toString().split('.')[0]),
+      duration: util.formatSecond(e.detail.duration.toString().split('.')[0])
+    })
   },
   onLoad: function () {
     self=this;
@@ -54,7 +93,8 @@ function getinfo(){
         'chineseWord': res.data[0].chineseWord,
         'englishWord': res.data[0].englishWord,
         'xiaobian': res.data[0].xiaobian,
-        'id': res.data[0].id
+        'id': res.data[0].id,
+        'audio': res.data[0].audio
       })
       console.log(res.data[0].pic);
     },

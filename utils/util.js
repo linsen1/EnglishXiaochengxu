@@ -14,6 +14,13 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+const formatSecond = second=>{
+  
+  return [parseInt(second/60 % 60), second % 60].join(":")
+    .replace(/\b(\d)\b/g, "0$1");
+}
+
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+  formatSecond: formatSecond
 }
