@@ -2,12 +2,9 @@
 <view class='container'>
 
 <view wx:for="{{info}}" wx:key="{{item.id}}" >
-
 <view class='item.pic'>
 <navigator url="../info/info?id={{item.id}}"><image src='{{item.pic}}' style='width:100%'></image></navigator>
-<view class='englishword'>
-{{item.englishWord}}
-</view>
+<view class='englishword'>{{item.englishWord}}</view>
 <view class='info'>
 <view class='riqi'>{{item.created_at}}</view>
 <view class='xiangqing'>
@@ -15,6 +12,8 @@
  </view>
 </view>
 </view>
+<view class='BR'></view>
 </view>
+
 <view class='loadingMore' hidden='{{loadingMoreHidden}}'>{{loadingMore}}</view>
 </view>

@@ -4,21 +4,15 @@
     <image src="{{pic}}" style='width:100%' ></image>
   </view>
   <view class='BR'></view>
-  <view class='wordtext'>
-  {{englishWord}}
-  </view>
-  <view class='chinese'>
-  {{chineseWord}}
-  </view>
+  <view class='wordtext'>{{englishWord}}</view>
+  <view class='chinese'>{{chineseWord}}</view>
   <view class='BR'></view>
   <view class='BR'></view>
   <view class='xiaobian'>
   小编碎碎念
   </view>
   <view class='BR'></view>
-  <view class='xiaobian_content'>
-  {{xiaobian}}
-  </view>
+  <view class='xiaobian_content'>{{xiaobian}}</view>
   <view class='BR' style='margin-top:35px'></view>
   <audio  src="{{audio}}" id="audio" bindended='playEnd' bindtimeupdate="MusicStart"></audio>
   <view class='audio'>

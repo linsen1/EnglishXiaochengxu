@@ -10,9 +10,10 @@
 .BR{
   height: 8px
 }
+
 .item{
   background-color: white;
-  height:310px;
+  height:302px;
   text-align: center;
 }
 .englishword{

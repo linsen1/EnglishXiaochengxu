@@ -15,7 +15,8 @@ Page({
     'progress':'0',
     'playimg':'/images/control/play.png',
     'currentTime':'00:00',
-    'duration':'00:00'
+    'duration':'00:00',
+    'words':''
   },
   onReady:function(e){
     this.audioCtx = wx.createAudioContext('audio');
@@ -95,8 +96,17 @@ function getinfo(){
         'xiaobian': res.data[0].xiaobian,
         'id': res.data[0].id,
         'audio': res.data[0].audio
+      });
+      wx.request({
+        url: 'https://www.weipinpai.wang/api/english/getword/1',
+        success:function(res1){
+          self.setData({
+            words:res1.data
+          });
+          console.log(res1.data);
+        }
       })
-      console.log(res.data[0].pic);
+      
     },
     complete: function () {
       wx.hideNavigationBarLoading();
