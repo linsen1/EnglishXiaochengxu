@@ -1,0 +1,11 @@
+<!--pages/my/my.wxml-->
+<view class="container">
+  <view class="userinfo">
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{avatarUrl}}" background-size="cover" style='width:128rpx' mode='widthFix'></image>
+      <text class="userinfo-nickname">{{nickName}}</text>
+  </view>
+<view>
+<button open-type="contact" style='margin-top:10px'>进入客服会话</button>
+</view>
+</view>
+
