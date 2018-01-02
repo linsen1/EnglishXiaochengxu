@@ -32,6 +32,26 @@ const getUserInfo=function(openID){
       var userInfo = res.userInfo;
       userInfo.openId = openID;
       wx.setStorageSync('userInfo', userInfo);
+      wx.request({
+        url: 'https://www.guzhenshuo.cc/api/english/addUser',
+        method:'POST',
+        data:{
+          openId: openID,
+          nickName: userInfo.nickName,
+          gender: userInfo.gender,
+          language: userInfo.language,
+          city: userInfo.city,
+          province: userInfo.province,
+          country: userInfo.country,
+          avatarUrl: userInfo.avatarUrl
+        },
+        header: {
+          'content-type': 'application/json' // 默认值
+        },
+        success: function (res) {
+          console.log(res.data)
+        }
+      })
       console.log(wx.getStorageSync('userInfo', userInfo));
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
