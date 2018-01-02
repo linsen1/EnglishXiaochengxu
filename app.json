@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/his/his",
-    "pages/info/info"
+    "pages/info/info",
+    "pages/my/my"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -27,6 +28,12 @@
         "selectedIconPath": "images/nav/lishi.png",
         "pagePath": "pages/his/his",
         "text": "历史"
+      },
+      {
+        "iconPath": "images/nav/my0.png",
+        "selectedIconPath": "images/nav/my.png",
+        "pagePath": "pages/my/my",
+        "text": "我的"
       }
     ]
   }

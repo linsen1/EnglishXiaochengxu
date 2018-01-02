@@ -16,11 +16,31 @@ Page({
     'playimg':'/images/control/play.png',
     'currentTime':'00:00',
     'duration':'00:00',
-    'words':''
+    'words':'',
+    yinbiaoMp3Img:'/images/control/laba1.png',
+    hidden:false
   },
   onReady:function(e){
     this.audioCtx = wx.createAudioContext('audio');
     
+  },
+  PlayMp3:function(e){
+    this.audioMp3 = wx.createAudioContext('myAudio' + e.currentTarget.dataset.id);
+    this.audioMp3.play();
+    self.setData({
+      yinbiaoMp3Img: '/images/control/laba.png'
+    });
+    this.audioMp3=null;
+   
+  },
+  PlayMp3_1:function(e){
+    this.audioMp3 = wx.createAudioContext('myAudio' + e.currentTarget.dataset.id+'_1');
+    this.audioMp3.play();
+    self.setData({
+      yinbiaoMp3Img: '/images/control/laba.png'
+    });
+    this.audioMp3 = null;
+    console.log(e.currentTarget.dataset.id+'_1');
   },
   audioPlay: function () {
     if (this.data.playimg =='/images/control/play.png')
@@ -41,6 +61,11 @@ Page({
   playEnd:function(){
     self.setData({
       'playimg': '/images/control/play.png'
+    });
+  },
+  playMp3End:function(){
+    self.setData({
+      'yinbiaoMp3Img': '/images/control/laba1.png'
     });
   },
   MusicStart:function(e){
@@ -98,12 +123,23 @@ function getinfo(){
         'audio': res.data[0].audio
       });
       wx.request({
-        url: 'https://www.weipinpai.wang/api/english/getword/1',
+        url: 'https://www.guzhenshuo.cc/api/english/getword/'+res.data[0].id,
         success:function(res1){
+          if (res1.data === undefined || res1.data.length == 0)
+          {
           self.setData({
-            words:res1.data
+            hidden: true
           });
-          console.log(res1.data);
+         
+          }
+          else
+          {
+            self.setData({
+              hidden: false,
+              words: res1.data
+            });
+            console.log(res1.data);
+          }
         }
       })
       

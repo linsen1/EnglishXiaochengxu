@@ -6,14 +6,7 @@
   <view class='BR'></view>
   <view class='wordtext'>{{englishWord}}</view>
   <view class='chinese'>{{chineseWord}}</view>
-  <view class='BR'></view>
-  <view class='BR'></view>
-  <view class='xiaobian'>
-  小编碎碎念
-  </view>
-  <view class='BR'></view>
-  <view class='xiaobian_content'>{{xiaobian}}</view>
-  <view class='BR' style='margin-top:35px'></view>
+
   <audio  src="{{audio}}" id="audio" bindended='playEnd' bindtimeupdate="MusicStart"></audio>
   <view class='audio'>
   <view class='controls'>
@@ -26,4 +19,56 @@
   </view>
   <view class='audiotime'>{{currentTime}}/{{duration}}</view>
   </view>
+
+
+  <view class='BR'></view>
+  <view class='xiaobian'>
+  小编碎碎念
+  </view>
+  <view class='BR'></view>
+  <view class='xiaobian_content'>{{xiaobian}}</view>
+
+  <view class='BR'></view>
+
+
+  <view class='englishWord' hidden='{{hidden}}'>
+
+  <view class='xiaobian' >
+  单词学习
+  </view>
+  <view class='BR' style='height:10px'></view>
+
+  <view class='words' wx:for="{{words}}" wx:key="{{item.id}}">
+
+  <view class='WordsText'>
+  {{item.word}}
+  </view>
+
+  <view class='yinbiaos'>
+
+  <view class='Englishyinbiao'>
+  <view class='yinbiao'>英：{{item.yinbiao}}</view> 
+  <audio  src="{{item.yinbiaoMp3}}" id="myAudio{{item.id}}" bindended='playMp3End' ></audio>
+  <view class='laba' data-id="{{item.id}}" bindtap="PlayMp3">
+  <image src="/images/control/laba1.png" style="width:22px" mode='widthFix' ></image>
+  </view>
+  </view>
+
+  <view class='Englishyinbiao'>
+  <view class='yinbiao'>美：{{item.yinbiao1}}</view> 
+  <audio  src="{{item.yinbiao1Mp3}}" id="myAudio{{item.id}}_1" bindended='playMp3End'></audio>
+  <view class='laba' bindtap="PlayMp3_1" data-id="{{item.id}}">
+  <image src="/images/control/laba1.png"  style="width:22px" mode='widthFix'  > </image>
+  </view>
+  </view>
+
+  </view>
+
+    <view class='content'>
+  <text>{{item.chinese}}</text>
+  <view class='BR' ></view>
+  </view>
+
+</view>
+</view>
 </view>

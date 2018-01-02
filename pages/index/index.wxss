@@ -36,7 +36,7 @@
   font-size: 12pt;
   color: #EA4961;
   margin-top: 5px;
-  padding-left: 6px
+  padding-left: 2px
 }
 .xiaobian_content{
   background-color: white;
@@ -89,19 +89,30 @@
 .words{
   text-align: left;
   background-color: white;
-  padding-left: 6px;
   margin-bottom: 2px;
+  padding-left: 6px;
 }
 .WordsText{
   padding-top: 2px;
   font-size: 13pt;
+  padding-left: 6px;
 }
 .yinbiaos{
   display: flex;
   flex-direction: row;
 }
-.yinbiao{
+
+.Englishyinbiao{
+  display: flex;
+  flex-direction: row;
   width: 50%;
+}
+.laba{
+   width: 20%;
+   text-align: left;
+}
+.yinbiao{
+  width: 80%;
   padding-top: 2px;
   font-size: 12pt;
   padding-left: 6px;
@@ -115,10 +126,8 @@
   text-align: left;
 }
 .content{
-  padding-top: 4px;
   font-size: 11pt;
   color:#888;
   text-align: justify;
-  margin-bottom: 4px;
-  padding-left: 6px;
+  padding-left: 8px;
 }
