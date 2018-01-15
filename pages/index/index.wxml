@@ -1,13 +1,13 @@
 <!--index.wxml-->
 <view class='nav'>
-  <view class='nav1'>
+  <view class='{{nav2}}' bindtap='changeNav'>
     名句
   </view>
-  <view class='nav2'>
+  <view class='{{nav1}}' bindtap='changeNav1'>
     电影
   </view>
 </view>
-<view class="container" hidden='true'>
+<view class="container" hidden='{{NavHidden}}' >
   <view class="top">
     <image src="{{pic}}" style='width:100%'></image>
   </view>
@@ -81,21 +81,19 @@
   </view>
 
 </view>
-<view class='container'>
+<view class='container' hidden='{{NavHidden1}}'>
   <view class='film'>
-    <video id="myVideo" class='myVideo' src="http://video.guzhenshuo.cc/97639849vodtransgzp1252522393/0f15b9a94564972819008402483/v.f20.mp4"
-    poster="https://api.hlppt.com/english/videos/201801/theCroodsPoster1.jpg"
+    <video id="myVideo" class='myVideo' src="{{video_URL}}"
+    poster="{{video_poster}}"
     ></video>
   </view>
    <view class='BR'></view>
   <view class='xiaobian'>
-  影片：《The Croods》(疯狂原始人)
+  影片：{{video_title}}
   </view>
   <view class='BR'></view>
   <view class='dialogtrans'>
-  <text>原始人咕噜一家六口在老爸瓜哥的庇护下生活。每天抢夺鸵鸟蛋为食，躲避野兽的追击，每晚听老爸叙述同一个故事，在山洞里过着一成不变的生活。大女儿小伊是一个和老爸性格截然相反的充满好奇心的女孩，她不满足一辈子留在这个小山洞里，一心想要追逐山洞外面的新奇世界。
-没想到世界末日突然降临，山洞被毁，一家人被迫离开家园，展开一场全新的旅程。。。
-  </text>
+  <text>{{video_introduce}}</text>
   </view>
   <view class='BR'></view>
   <view class='xiaobian'>
@@ -103,7 +101,7 @@
   </view>
   <view class='BR'></view>
   <view class='dialogtrans'>
-  天马上就要黑了，伊普却为了追逐阳光不肯回到山洞里，瓜哥很生气。
+  <text>{{video_dialog_bg}}</text>
   </view>
    <view class='BR'></view>
    <view class='xiaobian'>
@@ -111,24 +109,7 @@
    </view>
     <view class='BR'></view>
   <view class='dialog'>
-  <text>Grug: Eep!ome on, I gotta close the cave.Eep!
-  Eep: Okay! Okay!
-  Grug: Come on.Eep! Come down!That was too close!
-  Eep: I was watching. I was fine.
-  Grug: What were you doing up there, Eep? 
-  Eep: I don't know.
-  Grug: What were you looking for? 
-  Eep: Nothing.
-  Grug: Well then, why did you go up there?
-  Eep: I don't know!
-  Grug: Why don't you know?Stop looking for things!Fear keeps us alive, Eep.Never not be afraid.
-  Eep: What's the point of all this?
-  Grug: What was that? 
-  Eep: I mean, why are we here?What are we doing this for?
-  Grug: No one said survival is fun.
-  Eep: Nothing is fun.
-  Grug: Would you come down here?
-  Gran: Eep?Grug?</text>
+  <text>{{video_dialog_english}}</text>
   </view>
 
   <view class='BR'></view>
@@ -137,25 +118,7 @@
    </view>
     <view class='BR'></view>
   <view class='dialogtrans'>
-  <text>瓜哥：伊普！快回来，我得关掉洞穴了。伊普！
-伊普： 行了！来了！
-瓜哥：快啊。伊普！快下来！差点就没命了！
-伊普：我很小心，我没事。
-瓜哥：伊普，你去上面干什么？
-伊普：我不知道。
-瓜哥： 你到底在找什么？ 
-伊普：没什么。
-瓜哥：好吧，那你干嘛上去？
-伊普：我不知道！
-瓜哥：你怎么会不知道？别老想着找东西！恐惧使我们活下来，伊普。永远不要什么都无所畏惧。
-伊普：我们这样做的意义在哪里？
-瓜哥：你说什么？
-伊普：我的意思是：为什么我们存在于此？我们为什么要这么活着？
-瓜哥：没人说生存是件好玩的事。
-伊普：一点也不好玩。
-瓜哥：你能不能下来？
-奶奶：伊普？瓜哥？
-  </text>
+  <text>{{video_dialog_chinese}}</text>
   </view>
    <view class='BR'></view>
    <view class='xiaobian'>
@@ -163,8 +126,7 @@
    </view>
     <view class='BR'></view>
  <view class='dialog' style='margin-bottom: 40px;'>
-  <text>Fear keeps us alive, Eep.Never not be afraid.
-  恐惧使我们存活下来，伊普。永远不要什么都无所畏惧。</text>
+  <text>{{video_goldenSentence}}</text>
   </view>
 </view>
 <view class='favrate'>

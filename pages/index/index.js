@@ -19,7 +19,26 @@ Page({
     'words': '',
     favImg: '/images/control/fav.png',
     yinbiaoMp3Img: '/images/control/laba1.png',
-    hidden: false
+    hidden: false,
+    NavHidden:false,
+    NavHidden1: true,
+    nav2:'nav2',
+    nav1: 'nav1',
+    loadFilm:false,
+    video_title:'',
+    video_poster:'',
+    video_SDdataSize:'',
+    video_HDdataSize:'',
+    video_FHDdataSize:'',
+    video_SDURL:'',
+    video_HDURL:'',
+    video_FHDURL:'',
+    video_introduce:'',
+    video_dialog_bg:'',
+    video_dialog_english:'',
+    video_dialog_chinese:'',
+    video_goldenSentence:'',
+    video_URL: ''
   },
   onReady: function (e) {
     this.audioCtx = wx.createAudioContext('audio');
@@ -78,6 +97,28 @@ Page({
   onLoad: function () {
     self = this;
     getinfo();
+  },
+  changeNav:function(){
+    if(self.data['NavHidden']==true){
+      self.setData({
+        NavHidden:false,
+        NavHidden1:true,
+        nav2: 'nav2',
+        nav1: 'nav1'
+      })
+    }
+    getNewsInfo();
+  },
+  changeNav1: function () {
+    if (self.data['NavHidden1'] == true) {
+      self.setData({
+        NavHidden: true,
+        NavHidden1: false,
+        nav2: 'nav1',
+        nav1: 'nav2'
+      })
+    }
+    getNewsInfo();
   },
   addfav: function (e) {
     if (self.data['favImg'] == '/images/control/fav.png') {
@@ -152,7 +193,58 @@ Page({
   onPullDownRefresh: function () {
     getinfo();
   }
-})
+});
+
+function getNewsInfo(){
+  if (self.data['loadFilm']==false)
+  {
+    wx.request({
+      url: 'https://www.guzhenshuo.cc/api/english/newVideo',
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
+        console.log(res.data)
+        self.setData({
+          video_title: res.data[0].video_title,
+          video_poster: res.data[0].video_poster,
+          video_SDdataSize: res.data[0].video_SDdataSize,
+          video_HDdataSize: res.data[0].video_HDdataSize,
+          video_FHDdataSize: res.data[0].video_FHDdataSize,
+          video_SDURL: res.data[0].video_SDURL,
+          video_HDURL: res.data[0].video_HDURL,
+          video_FHDURL: res.data[0].video_FHDURL,
+          video_introduce: res.data[0].video_introduce,
+          video_dialog_bg: res.data[0].video_dialog_bg,
+          video_dialog_english: res.data[0].video_dialog_english,
+          video_dialog_chinese: res.data[0].video_dialog_chinese,
+          video_goldenSentence: res.data[0].video_goldenSentence
+        })
+      }
+    });
+    self.setData({
+      loadFilm:true
+    });
+    wx.getNetworkType({
+      success: function (res) {
+        // 返回网络类型, 有效值：
+        // wifi/2g/3g/4g/unknown(Android下不常见的网络类型)/none(无网络)
+        var networkType = res.networkType;
+        if (networkType =='wifi'){
+          self.setData({
+            video_URL: self.data['video_FHDURL']
+          });
+          
+        }
+        else
+        {
+          video_URL: self.data['video_SDURL'];
+        }
+      }
+    })
+  }
+}
+
 
 function getinfo() {
   wx.showNavigationBarLoading();
@@ -188,7 +280,6 @@ function getinfo() {
           }
         }
       });
-      
       if (wx.getStorageSync('userInfo') != '') {
         wx.request({
           url: 'https://www.guzhenshuo.cc/api/english/checkMyMotto/',

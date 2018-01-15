@@ -7,6 +7,7 @@
   display: flex;
   flex-direction: row;
   text-align: center;
+  
 }
 
 .nav1 {
@@ -14,6 +15,7 @@
   width: 50%;
   text-align: center;
   color: #888;
+  
 }
 .nav2 {
   font-size: 14pt;
@@ -21,6 +23,7 @@
   text-align: center;
   color: #ea4961;
   border-bottom: 1px solid #ea4961; 
+  
 }
 
 .container {
@@ -32,6 +35,7 @@
 }
 
 .top {
+  margin-top: 6px;
   width: 100%;
 }
 
@@ -213,17 +217,20 @@
 }
 
 .film {
-  background: black;
   height: 225px;
   display: flex; /*Flex布局*/
   display: -webkit-flex; /* Safari */
   align-items: center;
   text-align: center;
-  margin-top: 10px;
 }
 
 .myVideo {
-  width: 100%;
+  margin-top: 12px;
+  width:100%; 
+  display: flex; /*Flex布局*/
+  display: -webkit-flex; /* Safari */
+  align-items: center;
+  text-align: center;
 }
 
 .dialog{
