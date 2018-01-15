@@ -20,7 +20,25 @@ const formatSecond = second=>{
     .replace(/\b(\d)\b/g, "0$1");
 }
 
-const getUserInfo=function(openID){
+const getlogin=function(){
+  wx.login({
+    success: res => {
+      if (res.code) {
+        wx.request({
+          url: 'https://www.guzhenshuo.cc/weixin/onLogin/' + res.code,
+          method: 'POST',
+          success: function (res1) {
+            wx.setStorageSync('openid', res1.data.openid);
+            console.log('log:'+res1.data);
+          }
+        })
+      }
+      // 发送 res.code 到后台换取 openId, sessionKey, unionId
+    }
+  })
+}
+
+const getUserInfo=function(openID,callback){
   wx.getUserInfo({
     withCredentials: true,
     success: res => {
@@ -32,6 +50,9 @@ const getUserInfo=function(openID){
       var userInfo = res.userInfo;
       userInfo.openId = openID;
       wx.setStorageSync('userInfo', userInfo);
+      if(callback!=null){
+        callback();
+      }
       wx.request({
         url: 'https://www.guzhenshuo.cc/api/english/addUser',
         method:'POST',
@@ -55,8 +76,61 @@ const getUserInfo=function(openID){
       console.log(wx.getStorageSync('userInfo', userInfo));
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
+      /*
       if (this.userInfoReadyCallback) {
         this.userInfoReadyCallback(res)
+      }
+      */
+    }
+  })
+}
+const getUsersAll=function(callback){
+  wx.getSetting({
+    success: res => {
+      if (res.authSetting['scope.userInfo']) {
+        console.log('已授权');
+        // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+        console.log("openid:" + wx.getStorageSync('openid'));
+        getUserInfo(wx.getStorageSync('openid'));
+      } else {
+        console.log('未授权');
+        wx.authorize({
+          scope: 'scope.userInfo',
+          success() {
+            console.log('授权成功');
+            getUserInfo(wx.getStorageSync('openid'));
+            console.log("openid:" + wx.getStorageSync('openid'));
+          },
+          fail() {
+            wx.showModal({
+              title: '登录提示',
+              content: '亲，需要您的授权才能提供更好的服务哟~',
+              showCancel: false,
+              confirmText: "知道了",
+              success: function (res) {
+                if (res.confirm) {
+                  wx.openSetting(
+                    {
+                      success: (res) => {
+                        console.log(res.authSetting);
+                        if(callback!=null)
+                        {
+                          
+                          getUserInfo(wx.getStorageSync('openid'),callback);
+                        }
+                        else
+                        {
+                       
+                          getUserInfo(wx.getStorageSync('openid'));
+                        }
+                        console.log("openid:" + wx.getStorageSync('openid'));
+                      }
+                    })
+                }
+              }
+            })
+          }
+        })
       }
     }
   })
@@ -65,5 +139,7 @@ const getUserInfo=function(openID){
 module.exports = {
   formatTime: formatTime,
   formatSecond: formatSecond,
-  getUserInfo: getUserInfo
+  getUserInfo: getUserInfo,
+  getlogin: getlogin,
+  getUsersAll: getUsersAll
 }

@@ -18,8 +18,9 @@ Page({
     'currentTime': '00:00',
     'duration': '00:00',
     'words': '',
-     yinbiaoMp3Img: '/images/control/laba1.png',
-     hidden: false
+    favImg: '/images/control/fav.png',
+    yinbiaoMp3Img: '/images/control/laba1.png',
+    hidden: false
   },
   onReady: function (e) {
     this.audioCtx = wx.createAudioContext('audio');
@@ -88,7 +89,8 @@ Page({
           'chineseWord': res.data.chineseWord,
           'englishWord': res.data.englishWord,
           'xiaobian': res.data.xiaobian,
-          'audio': res.data.audio
+          'audio': res.data.audio,
+          'id': res.data.id,
         });
         wx.request({
           url: 'https://www.guzhenshuo.cc/api/english/getword/' + options.id,
@@ -107,9 +109,80 @@ Page({
               console.log(res1.data);
             }
           }
-        })        
+        });
+        if (wx.getStorageSync('userInfo')!='') {
+          wx.request({
+            url: 'https://www.guzhenshuo.cc/api/english/checkMyMotto/',
+            data: {
+              'openId': wx.getStorageSync('openid'),
+              'mottos_id': self.data['id']
+            },
+            header: {
+              'content-type': 'application/json' // 默认值
+            },
+            method: 'POST',
+            success: function (res) {
+              if (res.data.result == '1') {
+                self.setData({
+                  favImg: '/images/control/fav1.png'
+                })
+              }
+             
+              console.log("来自收藏:" + res.data.result);
+            }
+          })
+        }        
       }
     })
+
+  },
+  addfav: function (e) {
+    if (self.data['favImg'] == '/images/control/fav.png') {
+      if (wx.getStorageSync('userInfo') != '') {
+        console.log('请求接口');
+        wx.request({
+          url: 'https://www.guzhenshuo.cc/api/english/addMyMotto/', //仅为示例，并非真实的接口地址
+          header: {
+            'content-type': 'application/json' // 默认值
+          },
+          data: {
+            openId: wx.getStorageSync('openid'),
+            mottos_id: e.currentTarget.dataset.id
+          },
+          method: 'POST',
+          success: function (res) {
+            self.setData({
+              favImg: '/images/control/fav1.png',
+            });
+            console.log(res.data.result)
+          }
+        });
+      }
+      else {
+        console.log('未授权，获取授权');
+        util.getlogin();
+        util.getUsersAll();
+      }
+    }
+    else {
+      wx.request({
+        url: 'https://www.guzhenshuo.cc/api/english/DelMyMotto/', //仅为示例，并非真实的接口地址
+        header: {
+          'content-type': 'application/json' // 默认值
+        },
+        data: {
+          openId: wx.getStorageSync('openid'),
+          mottos_id: e.currentTarget.dataset.id
+        },
+        method: 'POST',
+        success: function (res) {
+          self.setData({
+            favImg: '/images/control/fav.png',
+          });
+          console.log(res.data)
+        }
+      });   
+    }
 
   },
   onShareAppMessage: function (res) {

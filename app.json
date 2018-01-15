@@ -4,7 +4,8 @@
     "pages/logs/logs",
     "pages/his/his",
     "pages/info/info",
-    "pages/my/my"
+    "pages/my/my",
+    "pages/mymotto/mymotto"
   ],
   "window": {
     "backgroundTextStyle": "light",

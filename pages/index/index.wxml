@@ -1,29 +1,37 @@
 <!--index.wxml-->
-<view class="container">
+<view class='nav'>
+  <view class='nav1'>
+    名句
+  </view>
+  <view class='nav2'>
+    电影
+  </view>
+</view>
+<view class="container" hidden='true'>
   <view class="top">
-    <image src="{{pic}}" style='width:100%' ></image>
+    <image src="{{pic}}" style='width:100%'></image>
   </view>
   <view class='BR'></view>
   <view class='wordtext'>{{englishWord}}</view>
   <view class='chinese'>{{chineseWord}}</view>
 
-  <audio  src="{{audio}}" id="audio" bindended='playEnd' bindtimeupdate="MusicStart"></audio>
+  <audio src="{{audio}}" id="audio" bindended='playEnd' bindtimeupdate="MusicStart"></audio>
   <view class='audio'>
-  <view class='controls'>
-  <image src="{{playimg}}" style='width:26px' mode='widthFix' bindtap="audioPlay"  ></image>
-  </view>
-  <view class='jindutiao'>
-  <view class='MusicProgress'>
-  <view class='bofangjindu' style='width:{{progress}}%'></view>
-  </view>
-  </view>
-  <view class='audiotime'>{{currentTime}}/{{duration}}</view>
+    <view class='controls'>
+      <image src="{{playimg}}" style='width:26px' mode='widthFix' bindtap="audioPlay"></image>
+    </view>
+    <view class='jindutiao'>
+      <view class='MusicProgress'>
+        <view class='bofangjindu' style='width:{{progress}}%'></view>
+      </view>
+    </view>
+    <view class='audiotime'>{{currentTime}}/{{duration}}</view>
   </view>
 
 
   <view class='BR'></view>
   <view class='xiaobian'>
-  小编碎碎念
+    小编碎碎念
   </view>
   <view class='BR'></view>
   <view class='xiaobian_content'>{{xiaobian}}</view>
@@ -33,41 +41,143 @@
 
   <view class='englishWord' hidden='{{hidden}}'>
 
-  <view class='xiaobian' >
-  单词学习
-  </view>
-  <view class='BR' style='height:10px'></view>
+    <view class='xiaobian'>
+      单词学习
+    </view>
+    <view class='BR' style='height:10px'></view>
 
-  <view class='words' wx:for="{{words}}" wx:key="{{item.id}}">
+    <view class='words' wx:for="{{words}}" wx:key="{{item.id}}">
 
-  <view class='WordsText'>
-  {{item.word}}
-  </view>
+      <view class='WordsText'>
+        {{item.word}}
+      </view>
 
-  <view class='yinbiaos'>
+      <view class='yinbiaos'>
 
-  <view class='Englishyinbiao'>
-  <view class='yinbiao'>英：{{item.yinbiao}}</view> 
-  <audio  src="{{item.yinbiaoMp3}}" id="myAudio{{item.id}}" bindended='playMp3End' ></audio>
-  <view class='laba' data-id="{{item.id}}" bindtap="PlayMp3">
-  <image src="/images/control/laba1.png" style="width:24px" mode='widthFix' ></image>
-  </view>
-  </view>
+        <view class='Englishyinbiao'>
+          <view class='yinbiao'>英：{{item.yinbiao}}</view>
+          <audio src="{{item.yinbiaoMp3}}" id="myAudio{{item.id}}" bindended='playMp3End'></audio>
+          <view class='laba' data-id="{{item.id}}" bindtap="PlayMp3">
+            <image src="/images/control/laba1.png" style="width:24px" mode='widthFix'></image>
+          </view>
+        </view>
 
-  <view class='Englishyinbiao'>
-  <view class='yinbiao'>美：{{item.yinbiao1}}</view> 
-  <audio  src="{{item.yinbiao1Mp3}}" id="myAudio{{item.id}}_1" bindended='playMp3End'></audio>
-  <view class='laba' bindtap="PlayMp3_1" data-id="{{item.id}}">
-  <image src="/images/control/laba1.png"  style="width:24px" mode='widthFix'  > </image>
-  </view>
-  </view>
+        <view class='Englishyinbiao'>
+          <view class='yinbiao'>美：{{item.yinbiao1}}</view>
+          <audio src="{{item.yinbiao1Mp3}}" id="myAudio{{item.id}}_1" bindended='playMp3End'></audio>
+          <view class='laba' bindtap="PlayMp3_1" data-id="{{item.id}}">
+            <image src="/images/control/laba1.png" style="width:24px" mode='widthFix'> </image>
+          </view>
+        </view>
 
-  </view>
+      </view>
 
-    <view class='content'>
-  <text>{{item.chinese}}</text>
+      <view class='content'>
+        <text>{{item.chinese}}</text>
+        <view class='BR'></view>
+        <view class='BR'></view>
+      </view>
+    </view>
   </view>
 
 </view>
+<view class='container'>
+  <view class='film'>
+    <video id="myVideo" class='myVideo' src="http://video.guzhenshuo.cc/97639849vodtransgzp1252522393/0f15b9a94564972819008402483/v.f20.mp4"
+    poster="https://api.hlppt.com/english/videos/201801/theCroodsPoster1.jpg"
+    ></video>
+  </view>
+   <view class='BR'></view>
+  <view class='xiaobian'>
+  影片：《The Croods》(疯狂原始人)
+  </view>
+  <view class='BR'></view>
+  <view class='dialogtrans'>
+  <text>原始人咕噜一家六口在老爸瓜哥的庇护下生活。每天抢夺鸵鸟蛋为食，躲避野兽的追击，每晚听老爸叙述同一个故事，在山洞里过着一成不变的生活。大女儿小伊是一个和老爸性格截然相反的充满好奇心的女孩，她不满足一辈子留在这个小山洞里，一心想要追逐山洞外面的新奇世界。
+没想到世界末日突然降临，山洞被毁，一家人被迫离开家园，展开一场全新的旅程。。。
+  </text>
+  </view>
+  <view class='BR'></view>
+  <view class='xiaobian'>
+  对话背景
+  </view>
+  <view class='BR'></view>
+  <view class='dialogtrans'>
+  天马上就要黑了，伊普却为了追逐阳光不肯回到山洞里，瓜哥很生气。
+  </view>
+   <view class='BR'></view>
+   <view class='xiaobian'>
+   电影原句
+   </view>
+    <view class='BR'></view>
+  <view class='dialog'>
+  <text>Grug: Eep!ome on, I gotta close the cave.Eep!
+  Eep: Okay! Okay!
+  Grug: Come on.Eep! Come down!That was too close!
+  Eep: I was watching. I was fine.
+  Grug: What were you doing up there, Eep? 
+  Eep: I don't know.
+  Grug: What were you looking for? 
+  Eep: Nothing.
+  Grug: Well then, why did you go up there?
+  Eep: I don't know!
+  Grug: Why don't you know?Stop looking for things!Fear keeps us alive, Eep.Never not be afraid.
+  Eep: What's the point of all this?
+  Grug: What was that? 
+  Eep: I mean, why are we here?What are we doing this for?
+  Grug: No one said survival is fun.
+  Eep: Nothing is fun.
+  Grug: Would you come down here?
+  Gran: Eep?Grug?</text>
+  </view>
+
+  <view class='BR'></view>
+   <view class='xiaobian'>
+   参考译文
+   </view>
+    <view class='BR'></view>
+  <view class='dialogtrans'>
+  <text>瓜哥：伊普！快回来，我得关掉洞穴了。伊普！
+伊普： 行了！来了！
+瓜哥：快啊。伊普！快下来！差点就没命了！
+伊普：我很小心，我没事。
+瓜哥：伊普，你去上面干什么？
+伊普：我不知道。
+瓜哥： 你到底在找什么？ 
+伊普：没什么。
+瓜哥：好吧，那你干嘛上去？
+伊普：我不知道！
+瓜哥：你怎么会不知道？别老想着找东西！恐惧使我们活下来，伊普。永远不要什么都无所畏惧。
+伊普：我们这样做的意义在哪里？
+瓜哥：你说什么？
+伊普：我的意思是：为什么我们存在于此？我们为什么要这么活着？
+瓜哥：没人说生存是件好玩的事。
+伊普：一点也不好玩。
+瓜哥：你能不能下来？
+奶奶：伊普？瓜哥？
+  </text>
+  </view>
+   <view class='BR'></view>
+   <view class='xiaobian'>
+   影视金句
+   </view>
+    <view class='BR'></view>
+ <view class='dialog' style='margin-bottom: 40px;'>
+  <text>Fear keeps us alive, Eep.Never not be afraid.
+  恐惧使我们存活下来，伊普。永远不要什么都无所畏惧。</text>
+  </view>
 </view>
+<view class='favrate'>
+  <view class='favrate-content'>
+    <view class='favrate-space'></view>
+    <view class='favrate-add'>
+      <image src="{{favImg}}" style='width:32px' mode='widthFix' bindtap='addfav' data-id="{{id}}"></image>
+    </view>
+    <view class='favrate-share'>
+      <button open-type="share" plain="true" style='border:0px'>
+        <image src='/images/control/fenxiang.png' style='width:32px' mode='widthFix'></image>
+      </button>
+    </view>
+    <view class='favrate-right'></view>
+  </view>
 </view>

@@ -1,27 +1,53 @@
 /**index.wxss**/
-.container{
+
+.nav {
+  margin: 0 auto;
+  margin-top: 4px;
+  width: 40%;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+}
+
+.nav1 {
+  font-size: 14pt;
+  width: 50%;
+  text-align: center;
+  color: #888;
+}
+.nav2 {
+  font-size: 14pt;
+  width: 50%;
+  text-align: center;
+  color: #ea4961;
+  border-bottom: 1px solid #ea4961; 
+}
+
+.container {
   margin: 0 auto;
   position: relative;
   width: 98%;
   display: flex;
   flex-direction: column;
-
 }
-.top{
+
+.top {
   width: 100%;
 }
-.BR{
-  height: 4px
+
+.BR {
+  height: 4px;
 }
 
-.wordtext{
+.wordtext {
   background-color: white;
   padding: 8px;
   font-size: 13pt;
   text-align: left;
-  line-height: 20pt
+  line-height: 20pt;
 }
-.chinese{
+
+.chinese {
   background-color: white;
   padding-top: 0px;
   padding-bottom: 8px;
@@ -31,23 +57,26 @@
   text-align: justify;
   line-height: 20pt;
 }
-.xiaobian{
+
+.xiaobian {
   text-align: left;
   font-size: 12pt;
-  color: #EA4961;
+  color: #ea4961;
   margin-top: 5px;
-  padding-left: 2px
+  padding-left: 2px;
 }
-.xiaobian_content{
+
+.xiaobian_content {
   background-color: white;
   margin-top: 5px;
-  padding:10px; 
+  padding: 10px;
   font-size: 12pt;
   text-align: justify;
   color: #888;
-  line-height: 18pt
+  line-height: 18pt;
 }
-.audio{
+
+.audio {
   bottom: 0px;
   margin-top: 2px;
   width: 100%;
@@ -56,78 +85,160 @@
   display: flex;
   flex-direction: row;
 }
-.controls{
+
+.controls {
   width: 8%;
   padding-top: 6px;
   padding-left: 6px;
   text-align: center;
 }
-.jindutiao{
+
+.jindutiao {
   width: 74%;
   margin-top: 18px;
   margin-bottom: 18px;
   vertical-align: middle;
 }
-.MusicProgress{
-  background:#888;
+
+.MusicProgress {
+  background: #888;
   width: 100%;
-  height:2px;
-}
-.bofangjindu{
-  background:#EA4961;
   height: 2px;
 }
-.audiotime{
+
+.bofangjindu {
+  background: #ea4961;
+  height: 2px;
+}
+
+.audiotime {
   width: 18%;
   font-size: 8pt;
-  color:#888;
-  padding-top:11px;
-  padding-left:3px;
+  color: #888;
+  padding-top: 11px;
+  padding-left: 3px;
   vertical-align: middle;
 }
 
-.words{
+.words {
   text-align: left;
   background-color: white;
   margin-bottom: 2px;
   padding-left: 6px;
 }
-.WordsText{
+
+.WordsText {
   padding-top: 2px;
   font-size: 13pt;
   padding-left: 6px;
 }
-.yinbiaos{
+
+.yinbiaos {
   display: flex;
   flex-direction: row;
 }
 
-.Englishyinbiao{
+.Englishyinbiao {
   display: flex;
   flex-direction: row;
   width: 50%;
 }
-.laba{
-   width: 20%;
-   text-align: left;
+
+.laba {
+  width: 20%;
+  text-align: left;
 }
-.yinbiao{
+
+.yinbiao {
   width: 80%;
   padding-top: 2px;
   font-size: 12pt;
   padding-left: 6px;
   text-align: left;
 }
-.yinbiao1{
+
+.yinbiao1 {
   width: 50%;
   padding-top: 2px;
   font-size: 12pt;
   padding-left: 6px;
   text-align: left;
 }
-.content{
+
+.content {
   font-size: 11pt;
-  color:#888;
+  color: #888;
   text-align: justify;
   padding-left: 8px;
 }
+
+.favrate {
+  position: fixed;
+  bottom: 0px;
+  height: 40px;
+  width: 100%;
+  background-color: white;
+}
+
+.favrate-content {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.favrate-space {
+  width: 68%;
+}
+
+.favrate-add {
+  width: 15%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.favrate-share {
+  width: 15%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.favrate-right {
+  width: 2%;
+}
+
+.englishWord {
+  margin-bottom: 40px;
+}
+
+.film {
+  background: black;
+  height: 225px;
+  display: flex; /*Flex布局*/
+  display: -webkit-flex; /* Safari */
+  align-items: center;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.myVideo {
+  width: 100%;
+}
+
+.dialog{
+  font-size: 13pt;
+  justify-content: center;
+  background-color: white;
+  line-height: 22pt;
+  padding: 10px;
+}
+.dialogtrans{
+  font-size: 13pt;
+  justify-content: center;
+  background-color: white;
+  line-height: 22pt;
+  padding: 10px;
+  color: #888;
+}
+

@@ -131,3 +131,38 @@
   text-align: justify;
   padding-left: 8px;
 }
+
+.favrate{
+  position:fixed;
+  bottom:0px;
+  height: 40px;
+  width: 100%;
+ 
+  background-color: white
+}
+.favrate-content{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.favrate-space{
+  width: 68%;
+}
+.favrate-add{
+  width: 15%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  text-align: center;
+}
+.favrate-share{
+  width: 15%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  text-align: center;
+}
+.favrate-right{
+  width: 2%;
+}
+.englishWord{
+  margin-bottom: 40px;
+}

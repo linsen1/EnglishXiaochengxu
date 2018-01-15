@@ -21,7 +21,7 @@
   border-radius: 50%;
 }
 .userinfo-nickname {
-  color: #888;
+  
   font-size: 13pt;
   margin-bottom: 8px;
 }
@@ -31,4 +31,35 @@
 }
 .BR{
   height: 4px
+}
+
+.myinfo{
+  margin-top: 10px;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  height: 40px;
+}
+.my_ico{
+  width: 10%;
+  display:flex;/*Flex布局*/
+  display: -webkit-flex; /* Safari */
+  align-items:center;
+  padding-left: 20px;
+}
+.my_txt{
+  font-size: 14pt;
+  width: 82%;
+  display:flex;/*Flex布局*/
+  display: -webkit-flex; /* Safari */
+  align-items:center;
+  text-align: left;
+  color: #888;
+}
+.my_jiantou{
+  width: 8%;
+  display:flex;/*Flex布局*/
+  display: -webkit-flex; /* Safari */
+  align-items:center;
 }
