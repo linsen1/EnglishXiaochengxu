@@ -7,7 +7,8 @@
     电影
   </view>
 </view>
-<view class="container" hidden='{{NavHidden}}' >
+
+<view class="container" hidden='{{NavHidden}}'>
   <view class="top">
     <image src="{{pic}}" style='width:100%'></image>
   </view>
@@ -81,53 +82,60 @@
   </view>
 
 </view>
+
 <view class='container' hidden='{{NavHidden1}}'>
+
   <view class='film'>
-    <video id="myVideo" class='myVideo' src="{{video_URL}}"
-    poster="{{video_poster}}"
-    ></video>
-  </view>
-   <view class='BR'></view>
-  <view class='xiaobian'>
-  影片：{{video_title}}
-  </view>
-  <view class='BR'></view>
-  <view class='dialogtrans'>
-  <text>{{video_introduce}}</text>
-  </view>
-  <view class='BR'></view>
-  <view class='xiaobian'>
-  对话背景
-  </view>
-  <view class='BR'></view>
-  <view class='dialogtrans'>
-  <text>{{video_dialog_bg}}</text>
-  </view>
-   <view class='BR'></view>
-   <view class='xiaobian'>
-   电影原句
-   </view>
-    <view class='BR'></view>
-  <view class='dialog'>
-  <text>{{video_dialog_english}}</text>
+    <video id="myVideo" class='myVideo' src="{{video_URL}}" poster="{{video_poster}}"></video>
   </view>
 
-  <view class='BR'></view>
-   <view class='xiaobian'>
-   参考译文
-   </view>
+
+  <scroll-view scroll-y style="height:324px">
     <view class='BR'></view>
-  <view class='dialogtrans'>
-  <text>{{video_dialog_chinese}}</text>
-  </view>
-   <view class='BR'></view>
-   <view class='xiaobian'>
-   影视金句
-   </view>
+    <view class='xiaobian' style='margin-top:5px'>
+      <text>影片：{{video_title}}
+  {{video_Mode}}：{{video_size}}</text>
+    </view>
     <view class='BR'></view>
- <view class='dialog' style='margin-bottom: 40px;'>
-  <text>{{video_goldenSentence}}</text>
-  </view>
+    <view class='dialogtrans'>
+      <text>{{video_introduce}}</text>
+    </view>
+    <view class='BR'></view>
+    <view class='xiaobian'>
+      对话背景
+    </view>
+    <view class='BR'></view>
+    <view class='dialogtrans'>
+      <text>{{video_dialog_bg}}</text>
+    </view>
+    <view class='BR'></view>
+    <view class='xiaobian'>
+      电影原句
+    </view>
+    <view class='BR'></view>
+    <view class='dialog'>
+      <text>{{video_dialog_english}}</text>
+    </view>
+
+    <view class='BR'></view>
+    <view class='xiaobian'>
+      参考译文
+    </view>
+    <view class='BR'></view>
+    <view class='dialogtrans'>
+      <text>{{video_dialog_chinese}}</text>
+    </view>
+    <view class='BR'></view>
+    <view class='xiaobian'>
+      影视金句
+    </view>
+    <view class='BR'></view>
+    <view class='dialog' style='margin-bottom: 40px;'>
+      <text>{{video_goldenSentence}}</text>
+    </view>
+  </scroll-view>
+
+
 </view>
 <view class='favrate'>
   <view class='favrate-content'>

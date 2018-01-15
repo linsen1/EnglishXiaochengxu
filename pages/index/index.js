@@ -38,7 +38,9 @@ Page({
     video_dialog_english:'',
     video_dialog_chinese:'',
     video_goldenSentence:'',
-    video_URL: ''
+    video_URL: '',
+    video_size: '0MB',
+    video_Mode: '标清'
   },
   onReady: function (e) {
     this.audioCtx = wx.createAudioContext('audio');
@@ -204,6 +206,29 @@ function getNewsInfo(){
         'content-type': 'application/json' // 默认值
       },
       success: function (res) {
+
+        wx.getNetworkType({
+          success: function (res1) {
+            // 返回网络类型, 有效值：
+            // wifi/2g/3g/4g/unknown(Android下不常见的网络类型)/none(无网络)
+            var networkType = res1.networkType;
+            if (networkType == 'wifi') {
+              self.setData({
+                video_URL: res.data[0].video_FHDURL,
+                video_size: res.data[0].video_FHDdataSize,
+                video_Mode:'超清'
+              });
+
+            }
+            else {
+              self.setData({
+                video_URL: res.data[0].video_SDURL,
+                video_size: res.data[0].video_SDdataSize,
+                video_Mode: '标清'
+              });
+            }
+          }
+        })
         console.log(res.data)
         self.setData({
           video_title: res.data[0].video_title,
@@ -219,29 +244,14 @@ function getNewsInfo(){
           video_dialog_english: res.data[0].video_dialog_english,
           video_dialog_chinese: res.data[0].video_dialog_chinese,
           video_goldenSentence: res.data[0].video_goldenSentence
-        })
+        });
+      
       }
     });
     self.setData({
       loadFilm:true
     });
-    wx.getNetworkType({
-      success: function (res) {
-        // 返回网络类型, 有效值：
-        // wifi/2g/3g/4g/unknown(Android下不常见的网络类型)/none(无网络)
-        var networkType = res.networkType;
-        if (networkType =='wifi'){
-          self.setData({
-            video_URL: self.data['video_FHDURL']
-          });
-          
-        }
-        else
-        {
-          video_URL: self.data['video_SDURL'];
-        }
-      }
-    })
+ 
   }
 }
 
