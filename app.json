@@ -5,7 +5,9 @@
     "pages/his/his",
     "pages/info/info",
     "pages/my/my",
-    "pages/mymotto/mymotto"
+    "pages/mymotto/mymotto",
+    "pages/film/film",
+    "pages/filminfo/filminfo"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -28,7 +30,13 @@
         "iconPath": "images/nav/lishi0.png",
         "selectedIconPath": "images/nav/lishi.png",
         "pagePath": "pages/his/his",
-        "text": "历史"
+        "text": "短句"
+      },
+      {
+        "iconPath": "images/nav/film0.png",
+        "selectedIconPath": "images/nav/film.png",
+        "pagePath": "pages/film/film",
+        "text": "影视"
       },
       {
         "iconPath": "images/nav/my0.png",

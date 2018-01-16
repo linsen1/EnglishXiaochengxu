@@ -1,0 +1,66 @@
+<!--pages/filminfo/filminfo.wxml-->
+<view class='container'>
+  <view class='film'>
+    <video id="myVideo" class='myVideo' src="{{video_URL}}" poster="{{video_poster}}"></video>
+  </view>
+  <scroll-view scroll-y style="height:{{video_content_height}}px">
+    <view class='BR'></view>
+    <view class='xiaobian' style='margin-top:5px'>
+      <text>影片：{{video_title}}
+  {{video_Mode}}：{{video_size}}</text>
+    </view>
+    <view class='BR'></view>
+    <view class='dialogtrans'>
+      <text>{{video_introduce}}</text>
+    </view>
+    <view class='BR'></view>
+    <view class='xiaobian'>
+      对话背景
+    </view>
+    <view class='BR'></view>
+    <view class='dialogtrans'>
+      <text>{{video_dialog_bg}}</text>
+    </view>
+    <view class='BR'></view>
+    <view class='xiaobian'>
+      电影原句
+    </view>
+    <view class='BR'></view>
+    <view class='dialog'>
+      <text>{{video_dialog_english}}</text>
+    </view>
+
+    <view class='BR'></view>
+    <view class='xiaobian'>
+      参考译文
+    </view>
+    <view class='BR'></view>
+    <view class='dialogtrans'>
+      <text>{{video_dialog_chinese}}</text>
+    </view>
+    <view class='BR'></view>
+    <view class='xiaobian'>
+      影视金句
+    </view>
+    <view class='BR'></view>
+    <view class='dialog' style='margin-bottom: 40px;'>
+      <text>{{video_goldenSentence}}</text>
+    </view>
+  </scroll-view>
+
+
+</view>
+<view class='favrate'>
+  <view class='favrate-content'>
+    <view class='favrate-space'></view>
+    <view class='favrate-add'>
+      <image src="{{favImg}}" style='width:32px' mode='widthFix' bindtap='addfav' data-id="{{id}}" hidden='true'></image>
+    </view>
+    <view class='favrate-share'>
+      <button open-type="share" plain="true" style='border:0px'>
+        <image src='/images/control/fenxiang.png' style='width:32px' mode='widthFix'></image>
+      </button>
+    </view>
+    <view class='favrate-right'></view>
+  </view>
+</view>

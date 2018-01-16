@@ -41,7 +41,8 @@ Page({
     video_URL: '',
     video_size: '0MB',
     video_Mode: '标清',
-    video_content_height:'324'
+    video_content_height:'324',
+    favHidden:false
   },
   onReady: function (e) {
     this.audioCtx = wx.createAudioContext('audio');
@@ -107,7 +108,8 @@ Page({
         NavHidden:false,
         NavHidden1:true,
         nav2: 'nav2',
-        nav1: 'nav1'
+        nav1: 'nav1',
+        favHidden: false
       })
     }
     getNewsInfo();
@@ -118,7 +120,8 @@ Page({
         NavHidden: true,
         NavHidden1: false,
         nav2: 'nav1',
-        nav1: 'nav2'
+        nav1: 'nav2',
+        favHidden:true
       })
     }
     getNewsInfo();
@@ -286,7 +289,6 @@ function getinfo() {
             self.setData({
               hidden: true
             });
-
           }
           else {
             self.setData({

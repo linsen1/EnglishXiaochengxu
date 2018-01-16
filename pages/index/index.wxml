@@ -4,7 +4,7 @@
     名句
   </view>
   <view class='{{nav1}}' bindtap='changeNav1'>
-    电影
+    影视
   </view>
 </view>
 
@@ -141,7 +141,7 @@
   <view class='favrate-content'>
     <view class='favrate-space'></view>
     <view class='favrate-add'>
-      <image src="{{favImg}}" style='width:32px' mode='widthFix' bindtap='addfav' data-id="{{id}}"></image>
+      <image src="{{favImg}}" style='width:32px' mode='widthFix' bindtap='addfav' data-id="{{id}}" hidden='{{favHidden}}'></image>
     </view>
     <view class='favrate-share'>
       <button open-type="share" plain="true" style='border:0px'>
