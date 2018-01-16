@@ -3,7 +3,7 @@
 
 <view wx:for="{{info}}" wx:key="{{item.id}}" >
 <view class='item.pic'>
-<navigator url="../filminfo/filminfo?id={{item.id}}"><image src='{{item.video_poster}}' style='width:100%'></image></navigator>
+<navigator url="../filminfo/filminfo?id={{item.id}}"><image src='{{item.video_poster}}' style='width:100%'  mode='widthFix'></image></navigator>
 <view class='englishword'>{{item.video_title}}</view>
 <view class='info'>
 <view class='riqi'>{{item.created_at}}</view>
