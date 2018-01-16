@@ -6,6 +6,7 @@
   display: flex;
   flex-direction: row;
   text-align: center;
+  height: 34px;
 }
 
 .nav1 {

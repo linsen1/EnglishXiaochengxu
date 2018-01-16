@@ -90,7 +90,7 @@
   </view>
 
 
-  <scroll-view scroll-y style="height:324px">
+  <scroll-view scroll-y style="height:{{video_content_height}}px">
     <view class='BR'></view>
     <view class='xiaobian' style='margin-top:5px'>
       <text>影片：{{video_title}}

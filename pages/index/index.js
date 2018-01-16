@@ -40,7 +40,8 @@ Page({
     video_goldenSentence:'',
     video_URL: '',
     video_size: '0MB',
-    video_Mode: '标清'
+    video_Mode: '标清',
+    video_content_height:'324'
   },
   onReady: function (e) {
     this.audioCtx = wx.createAudioContext('audio');
@@ -206,7 +207,13 @@ function getNewsInfo(){
         'content-type': 'application/json' // 默认值
       },
       success: function (res) {
-
+        wx.getSystemInfo({
+          success: function (res2) {
+            self.setData({
+              video_content_height: res2.windowHeight-34-225-40
+            })      
+          }
+        })
         wx.getNetworkType({
           success: function (res1) {
             // 返回网络类型, 有效值：
