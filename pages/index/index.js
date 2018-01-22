@@ -182,7 +182,7 @@ Page({
       console.log(res.target)
     }
     return {
-      title: '每日一句英语名言',
+      title: '每天读些英文',
       path: '/pages/info/info?id=' + this.data.id,
 
       success: function (res) {
