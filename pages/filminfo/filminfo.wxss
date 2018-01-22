@@ -56,6 +56,45 @@
 }
 
 
+.words{
+  text-align: left;
+  background-color: white;
+  margin-bottom: 2px;
+  padding-left: 6px;
+}
+.WordsText{
+  padding-top: 2px;
+  font-size: 13pt;
+  padding-left: 6px;
+}
+.yinbiaos{
+  display: flex;
+  flex-direction: row;
+}
+
+.Englishyinbiao{
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+}
+.laba{
+   width: 20%;
+   text-align: left;
+}
+.yinbiao{
+  width: 80%;
+  padding-top: 2px;
+  font-size: 12pt;
+  padding-left: 6px;
+  text-align: left;
+}
+.yinbiao1{
+  width: 50%;
+  padding-top: 2px;
+  font-size: 12pt;
+  padding-left: 6px;
+  text-align: left;
+}
 
 .content {
   font-size: 11pt;
@@ -101,7 +140,7 @@
 }
 
 .englishWord {
-  margin-bottom: 40px;
+ 
 }
 
 .film {

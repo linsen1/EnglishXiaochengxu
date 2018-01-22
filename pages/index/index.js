@@ -20,6 +20,8 @@ Page({
     favImg: '/images/control/fav.png',
     yinbiaoMp3Img: '/images/control/laba1.png',
     hidden: false,
+    hidden1:false,
+    words1:'',
     NavHidden:false,
     NavHidden1: true,
     nav2:'nav2',
@@ -255,7 +257,23 @@ function getNewsInfo(){
           video_dialog_chinese: res.data[0].video_dialog_chinese,
           video_goldenSentence: res.data[0].video_goldenSentence
         });
-      
+        wx.request({
+          url: 'https://www.guzhenshuo.cc/api/english/getVideoWord/' + res.data[0].id,
+          success: function (res1) {
+            if (res1.data === undefined || res1.data.length == 0) {
+              self.setData({
+                hidden1: true
+              });
+            }
+            else {
+              self.setData({
+                hidden1: false,
+                words1: res1.data
+              });
+              console.log(res1.data);
+            }
+          }
+        });
       }
     });
     self.setData({

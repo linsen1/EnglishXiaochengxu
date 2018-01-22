@@ -27,7 +27,8 @@ Page({
     video_URL: '',
     video_size: '0MB',
     video_Mode: '标清',
-    video_content_height: '225'
+    video_content_height: '225',
+    hidden: false
   },
 
   /**
@@ -100,6 +101,29 @@ Page({
         // 转发失败
       }
     }
+  },
+  PlayMp3: function (e) {
+    this.audioMp3 = wx.createAudioContext('myAudio' + e.currentTarget.dataset.id);
+    this.audioMp3.play();
+    self.setData({
+      yinbiaoMp3Img: '/images/control/laba.png'
+    });
+    this.audioMp3 = null;
+
+  },
+  PlayMp3_1: function (e) {
+    this.audioMp3 = wx.createAudioContext('myAudio' + e.currentTarget.dataset.id + '_1');
+    this.audioMp3.play();
+    self.setData({
+      yinbiaoMp3Img: '/images/control/laba.png'
+    });
+    console.log(e.currentTarget.dataset.id + '_1');
+    this.audioMp3 = null;
+  },
+  playMp3End: function () {
+    self.setData({
+      'yinbiaoMp3Img': '/images/control/laba1.png'
+    });
   }
 })
 
@@ -157,7 +181,24 @@ function getFilmInfo(id) {
       });
       wx.setNavigationBarTitle({
         title: res.data.video_title
-      })
+      });
+      wx.request({
+        url: 'https://www.guzhenshuo.cc/api/english/getVideoWord/' + res.data.id,
+        success: function (res1) {
+          if (res1.data === undefined || res1.data.length == 0) {
+            self.setData({
+              hidden: true
+            });
+          }
+          else {
+            self.setData({
+              hidden: false,
+              words: res1.data
+            });
+            console.log(res1.data);
+          }
+        }
+      });
     }
   });
 }
