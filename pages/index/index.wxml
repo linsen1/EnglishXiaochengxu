@@ -35,7 +35,7 @@
     小编碎碎念
   </view>
   <view class='BR'></view>
-  <view class='xiaobian_content'>{{xiaobian}}</view>
+  <view class='xiaobian_content'><text>{{xiaobian}}</text></view>
 
   <view class='BR'></view>
 
@@ -50,7 +50,7 @@
     <view class='words' wx:for="{{words}}" wx:key="{{item.id}}">
 
       <view class='WordsText'>
-        {{item.word}}
+        <text>{{item.word}}</text>
       </view>
 
       <view class='yinbiaos'>
