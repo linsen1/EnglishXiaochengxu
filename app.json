@@ -7,7 +7,9 @@
     "pages/my/my",
     "pages/mymotto/mymotto",
     "pages/film/film",
-    "pages/filminfo/filminfo"
+    "pages/filminfo/filminfo",
+    "pages/article/article",
+    "pages/articleinfo/articleinfo"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -31,6 +33,12 @@
         "selectedIconPath": "images/nav/lishi.png",
         "pagePath": "pages/his/his",
         "text": "名句"
+      },
+      {
+        "iconPath": "images/nav/article0.png",
+        "selectedIconPath": "images/nav/article.png",
+        "pagePath": "pages/article/article",
+        "text": "美文"
       },
       {
         "iconPath": "images/nav/film0.png",

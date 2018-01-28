@@ -1,0 +1,19 @@
+<!--pages/article/article.wxml-->
+<view class='container'>
+
+<view wx:for="{{info}}" wx:key="{{item.id}}" >
+<view class='item.pic'>
+<navigator url="../articleinfo/articleinfo?id={{item.id}}"><image src='{{item.picUrl}}' style='width:100%'></image></navigator>
+<view class='englishword'>{{item.title}}</view>
+<view class='info'>
+<view class='riqi'>{{item.created_at}}</view>
+<view class='xiangqing'>
+<navigator url="../articleinfo/articleinfo?id={{item.id}}">点击阅读</navigator>
+ </view>
+</view>
+</view>
+<view class='BR'></view>
+</view>
+
+<view class='loadingMore' hidden='{{loadingMoreHidden}}'>{{loadingMore}}</view>
+</view>
