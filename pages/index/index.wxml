@@ -3,6 +3,9 @@
   <view class='{{nav2}}' bindtap='changeNav'>
     名句
   </view>
+  <view class='{{nav3}}' bindtap='changeNav2'>
+    美文
+  </view>
   <view class='{{nav1}}' bindtap='changeNav1'>
     影视
   </view>
@@ -82,7 +85,87 @@
   </view>
 
 </view>
+<view class="container" hidden='{{NavHidden2}}'>
+  <view class="top">
+    <image src="{{picUrl}}" style='width:100%'></image>
+  </view>
 
+  <view class='xiaobian' style='text-align:center;font-size: 14pt;'>
+    {{title}}
+  </view>
+  <view class='BR'></view>
+  <view class='xiaobian_content'>{{note}}</view>
+  <view class='BR'></view>
+    <audio src="{{mp3URL}}" id="audio1" bindended='playEnd1' bindtimeupdate="MusicStart1"></audio>
+  <view class='audio'>
+    <view class='controls'>
+      <image src="{{playimg1}}" style='width:26px' mode='widthFix' bindtap="audioPlay1"></image>
+    </view>
+    <view class='jindutiao'>
+      <view class='MusicProgress'>
+        <view class='bofangjindu' style='width:{{progress1}}%'></view>
+      </view>
+    </view>
+    <view class='audiotime'>{{currentTime1}}/{{duration1}}</view>
+  </view>
+  <view class='BR'></view>
+   <view class='xiaobian'>
+    英文
+  </view>
+  <view class='BR'></view>
+  <view class='wordtext' style='text-align: justify;'>
+  <text>{{englishContent}}</text>
+  </view>
+    <view class='BR'></view>
+   <view class='xiaobian'>
+    译文
+  </view>
+  <view class='BR'></view>
+   <view class='wordtext'>
+  <view class='chinese' style='color: #888;font-size: 12pt;text-align: justify;'><text>{{chineseContent}}</text></view>
+  </view>
+    <view class='BR'></view>
+  <view class='englishWord' hidden='{{ArticleWordHidden}}'>
+    <view class='xiaobian'>
+      单词学习
+    </view>
+    <view class='BR' style='height:10px'></view>
+
+    <view class='words' wx:for="{{words}}" wx:key="{{item.id}}">
+
+      <view class='WordsText'>
+        {{item.word}}
+      </view>
+
+      <view class='yinbiaos'>
+
+        <view class='Englishyinbiao'>
+          <view class='yinbiao'>英：{{item.yinbiao}}</view>
+          <audio src="{{item.yinbiaoMp3}}" id="myAudio{{item.id}}" bindended='playMp3End'></audio>
+          <view class='laba' data-id="{{item.id}}" bindtap="PlayMp3">
+            <image src="/images/control/laba1.png" style="width:22px" mode='widthFix'></image>
+          </view>
+        </view>
+
+        <view class='Englishyinbiao'>
+          <view class='yinbiao'>美：{{item.yinbiao1}}</view>
+          <audio src="{{item.yinbiao1Mp3}}" id="myAudio{{item.id}}_1" bindended='playMp3End'></audio>
+          <view class='laba' bindtap="PlayMp3_1" data-id="{{item.id}}">
+            <image src="/images/control/laba1.png" style="width:22px" mode='widthFix'> </image>
+          </view>
+        </view>
+
+      </view>
+
+      <view class='content'>
+        <text>{{item.chinese}}</text>
+        <view class='BR'></view>
+        <view class='BR'></view>
+      </view>
+
+    </view>
+  </view>
+</view>
 <view class='container' hidden='{{NavHidden1}}'>
 
   <view class='film'>
@@ -177,6 +260,7 @@
 
 
 </view>
+
 <view class='favrate'>
   <view class='favrate-content'>
     <view class='favrate-space'></view>

@@ -16,17 +16,26 @@ Page({
     'playimg': '/images/control/play.png',
     'currentTime': '00:00',
     'duration': '00:00',
+    progress1: '0',
+    playimg1: '/images/control/play.png',
+    currentTime1: '00:00',
+    duration1: '00:00',
     'words': '',
     favImg: '/images/control/fav.png',
     yinbiaoMp3Img: '/images/control/laba1.png',
     hidden: false,
     hidden1:false,
+    ArticleWordHidden:false,
     words1:'',
     NavHidden:false,
     NavHidden1: true,
+    NavHidden2: true,
     nav2:'nav2',
+    nav3: 'nav1',
     nav1: 'nav1',
     loadFilm:false,
+    loadArticle:false,
+    videoID: '',
     video_title:'',
     video_poster:'',
     video_SDdataSize:'',
@@ -44,10 +53,18 @@ Page({
     video_size: '0MB',
     video_Mode: '标清',
     video_content_height:'324',
-    favHidden:false
+    favHidden:false,
+    picUrl: '',
+    chineseContent: '',
+    englishContent: '',
+    note: '',
+    articlID: '',
+    title: '',
+    mp3URL: '',
   },
   onReady: function (e) {
     this.audioCtx = wx.createAudioContext('audio');
+    this.audioCtx1 = wx.createAudioContext('audio1');
 
   },
   PlayMp3: function (e) {
@@ -74,6 +91,10 @@ Page({
       self.setData({
         'playimg': '/images/control/stop.png'
       });
+      this.audioCtx1.pause()
+      self.setData({
+        'playimg1': '/images/control/play.png'
+      });
     }
     else {
       this.audioCtx.pause()
@@ -82,9 +103,32 @@ Page({
       });
     }
   },
+  audioPlay1: function () {
+    if (this.data.playimg1 == '/images/control/play.png') {
+      this.audioCtx1.play();
+      self.setData({
+        playimg1: '/images/control/stop.png'
+      });
+      this.audioCtx.pause()
+      self.setData({
+        'playimg': '/images/control/play.png'
+      });
+    }
+    else {
+      this.audioCtx1.pause()
+      self.setData({
+        'playimg1': '/images/control/play.png'
+      });
+    }
+  },
   playEnd: function () {
     self.setData({
       'playimg': '/images/control/play.png'
+    });
+  },
+  playEnd1: function () {
+    self.setData({
+      playimg1: '/images/control/play.png'
     });
   },
   playMp3End: function () {
@@ -100,6 +144,14 @@ Page({
       duration: util.formatSecond(e.detail.duration.toString().split('.')[0])
     })
   },
+  MusicStart1: function (e) {
+    var progress = parseInt((e.detail.currentTime / e.detail.duration) * 100)
+    self.setData({
+      progress1: progress,
+      currentTime1: util.formatSecond(e.detail.currentTime.toString().split('.')[0]),
+      duration1: util.formatSecond(e.detail.duration.toString().split('.')[0])
+    })
+  },
   onLoad: function () {
     self = this;
     getinfo();
@@ -109,20 +161,37 @@ Page({
       self.setData({
         NavHidden:false,
         NavHidden1:true,
+        NavHidden2: true,
         nav2: 'nav2',
         nav1: 'nav1',
+        nav3: 'nav1',
         favHidden: false
       })
     }
-    getNewsInfo();
+  },
+  changeNav2: function () {
+    if (self.data['NavHidden2'] == true) {
+      self.setData({
+        NavHidden: true,
+        NavHidden2: false,
+        NavHidden1: true,
+        nav2: 'nav1',
+        nav3: 'nav2',
+        nav1: 'nav1',
+        favHidden: true
+      })
+    }
+    getArticleInfo();
   },
   changeNav1: function () {
     if (self.data['NavHidden1'] == true) {
       self.setData({
         NavHidden: true,
         NavHidden1: false,
+        NavHidden2: true,
         nav2: 'nav1',
         nav1: 'nav2',
+        nav3: 'nav1',
         favHidden:true
       })
     }
@@ -179,14 +248,28 @@ Page({
   },
   onShareAppMessage: function (res) {
     var that = this;
+    var shareTitle ='每天读些英文';
+    var shareUrl = '/pages/info/info?id=' + this.data.id;
+    if (this.data.NavHidden==false){
+      shareTitle = '每天读些英文';
+      shareUrl = '/pages/info/info?id=' + this.data.id;
+    }
+    else if (this.data.NavHidden1 == false){
+      shareTitle = this.data.video_title;;
+      shareUrl = '/pages/filminfo/filminfo?id=' + this.data.videoID;
+    }
+    else if (this.data.NavHidden2 == false){
+      shareTitle = this.data.title;
+      shareUrl = '/pages/articleinfo/articleinfo?id=' + this.data.articlID;
+    }
     if (res.from === 'button') {
       // 来自页面内转发按钮
       console.log(res.target)
     }
     return {
-      title: '每天读些英文',
-      path: '/pages/info/info?id=' + this.data.id,
 
+      title: shareTitle,
+      path: shareUrl,
       success: function (res) {
 
         console.log(that.data.id);
@@ -244,6 +327,7 @@ function getNewsInfo(){
         console.log(res.data)
         self.setData({
           video_title: res.data[0].video_title,
+          videoID: res.data[0].id,
           video_poster: res.data[0].video_poster,
           video_SDdataSize: res.data[0].video_SDdataSize,
           video_HDdataSize: res.data[0].video_HDdataSize,
@@ -283,6 +367,48 @@ function getNewsInfo(){
   }
 }
 
+function getArticleInfo(){
+  if (self.data['loadArticle'] == false){
+    wx.request({
+      url: 'https://www.guzhenshuo.cc/api/english/NewArticle', //仅为示例，并非真实的接口地址
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
+        self.setData({
+          'picUrl': res.data[0].picUrl,
+          'chineseContent': res.data[0].chineseContent,
+          'englishContent': res.data[0].englishContent,
+          'note': res.data[0].note,
+          'mp3URL': res.data[0].mp3URL,
+          'articlID': res.data[0].id,
+          'title': res.data[0].title
+        });
+        wx.request({
+          url: 'https://www.guzhenshuo.cc/api/english/getArticleWord/' + res.data[0].id,
+          success: function (res1) {
+            if (res1.data === undefined || res1.data.length == 0) {
+              self.setData({
+                ArticleWordHidden: true
+              });
+
+            }
+            else {
+              self.setData({
+                ArticleWordHidden: false,
+                words: res1.data
+              });
+              console.log(res1.data);
+            }
+          }
+        });
+        self.setData({
+          loadArticle: true
+        });
+      }
+    })
+  }
+}
 
 function getinfo() {
   wx.showNavigationBarLoading();
