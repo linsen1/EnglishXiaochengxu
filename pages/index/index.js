@@ -61,6 +61,7 @@ Page({
     articlID: '',
     title: '',
     mp3URL: '',
+    words2: '',
   },
   onReady: function (e) {
     this.audioCtx = wx.createAudioContext('audio');
@@ -396,7 +397,7 @@ function getArticleInfo(){
             else {
               self.setData({
                 ArticleWordHidden: false,
-                words: res1.data
+                words2: res1.data
               });
               console.log(res1.data);
             }

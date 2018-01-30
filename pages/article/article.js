@@ -74,7 +74,7 @@ function getlistMore() {
   self.setData({ 'loadingMoreHidden': false });
   wx.showNavigationBarLoading();
   wx.request({
-    url: 'https://www.guzhenshuo.cc/api/english/getVideoList?page=' + page,
+    url: 'https://www.guzhenshuo.cc/api/english/getArticleList?page=' + page,
     method: 'GET',
     header: {
       'content-type': 'application/json' // 默认值

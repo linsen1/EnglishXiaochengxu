@@ -131,7 +131,7 @@
     </view>
     <view class='BR' style='height:10px'></view>
 
-    <view class='words' wx:for="{{words}}" wx:key="{{item.id}}">
+    <view class='words' wx:for="{{words2}}" wx:key="{{item.id}}">
 
       <view class='WordsText'>
         {{item.word}}
