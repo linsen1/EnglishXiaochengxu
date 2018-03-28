@@ -14,13 +14,13 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
-const formatSecond = second=>{
-  
-  return [parseInt(second/60 % 60), second % 60].join(":")
+const formatSecond = second => {
+
+  return [parseInt(second / 60 % 60), second % 60].join(":")
     .replace(/\b(\d)\b/g, "0$1");
 }
 
-const getlogin=function(){
+const getlogin = function () {
   wx.login({
     success: res => {
       if (res.code) {
@@ -29,7 +29,7 @@ const getlogin=function(){
           method: 'POST',
           success: function (res1) {
             wx.setStorageSync('openid', res1.data.openid);
-            console.log('log:'+res1.data);
+            console.log('log:' + res1.data);
           }
         })
       }
@@ -38,7 +38,7 @@ const getlogin=function(){
   })
 }
 
-const getUserInfo=function(openID,callback){
+const getUserInfo = function (openID, callback) {
   wx.getUserInfo({
     withCredentials: true,
     success: res => {
@@ -50,13 +50,13 @@ const getUserInfo=function(openID,callback){
       var userInfo = res.userInfo;
       userInfo.openId = openID;
       wx.setStorageSync('userInfo', userInfo);
-      if(callback!=null){
+      if (callback != null) {
         callback();
       }
       wx.request({
         url: 'https://www.guzhenshuo.cc/api/english/addUser',
-        method:'POST',
-        data:{
+        method: 'POST',
+        data: {
           openId: openID,
           nickName: userInfo.nickName,
           gender: userInfo.gender,
@@ -84,7 +84,7 @@ const getUserInfo=function(openID,callback){
     }
   })
 }
-const getUsersAll=function(callback){
+const getUsersAll = function (callback) {
   wx.getSetting({
     success: res => {
       if (res.authSetting['scope.userInfo']) {
@@ -113,14 +113,12 @@ const getUsersAll=function(callback){
                     {
                       success: (res) => {
                         console.log(res.authSetting);
-                        if(callback!=null)
-                        {
-                          
-                          getUserInfo(wx.getStorageSync('openid'),callback);
+                        if (callback != null) {
+
+                          getUserInfo(wx.getStorageSync('openid'), callback);
                         }
-                        else
-                        {
-                       
+                        else {
+
                           getUserInfo(wx.getStorageSync('openid'));
                         }
                         console.log("openid:" + wx.getStorageSync('openid'));
@@ -135,11 +133,17 @@ const getUsersAll=function(callback){
     }
   })
 }
+const getCurrentUrl=function(){
+  var testURL='https://endemo.guzhenshuo.cc';
+  var Url='https://www.guzhenshuo.cc';
+  return Url;
+}
 
 module.exports = {
   formatTime: formatTime,
   formatSecond: formatSecond,
   getUserInfo: getUserInfo,
   getlogin: getlogin,
-  getUsersAll: getUsersAll
+  getUsersAll: getUsersAll,
+  getCurrentUrl: getCurrentUrl
 }

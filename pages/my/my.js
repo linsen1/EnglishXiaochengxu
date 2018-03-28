@@ -33,7 +33,7 @@ Page({
       });
     } else {
       wx.navigateTo({
-        url: '../mymotto/mymotto'
+        url: '../favlist/favlist'
       })
     }
   },

@@ -9,7 +9,10 @@
     "pages/film/film",
     "pages/filminfo/filminfo",
     "pages/article/article",
-    "pages/articleinfo/articleinfo"
+    "pages/articleinfo/articleinfo",
+    "pages/favlist/favlist",
+    "pages/myarticle/myarticle",
+    "pages/myfilm/myfilm"
   ],
   "window": {
     "backgroundTextStyle": "light",

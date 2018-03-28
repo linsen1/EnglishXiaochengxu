@@ -86,7 +86,7 @@
    <view class='favrate'>
     <view class='favrate-content'>
       <view class='favrate-space'></view>
-      <view class='favrate-add' ><image src="{{favImg}}" style='width:32px' mode='widthFix' bindtap='addfav' data-id="{{id}}" hidden='true' ></image></view>
+      <view class='favrate-add' ><image src="{{favImg}}" style='width:32px' mode='widthFix' bindtap='addfav' data-id="{{id}}"  ></image></view>
        <view class='favrate-share'><button open-type="share" plain="true" style='border:0px'><image src='/images/control/fenxiang.png' style='width:32px' mode='widthFix' ></image></button></view>
        <view class='favrate-right'></view>
     </view>

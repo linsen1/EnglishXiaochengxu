@@ -40,10 +40,10 @@
   <view class='BR'></view>
   <view class='xiaobian_content'><text>{{xiaobian}}</text></view>
 
-  <view class='BR'></view>
+  <view class='BR' ></view>
 
 
-  <view class='englishWord' hidden='{{hidden}}'>
+  <view class='englishWord'   hidden='{{hidden}}'>
 
     <view class='xiaobian'>
       单词学习
@@ -124,7 +124,7 @@
    <view class='wordtext'>
   <view class='chinese' style='color: #888;font-size: 12pt;text-align: justify;'><text>{{chineseContent}}</text></view>
   </view>
-    <view class='BR'></view>
+    <view class='BR'  ></view>
   <view class='englishWord' hidden='{{ArticleWordHidden}}'>
     <view class='xiaobian'>
       单词学习
@@ -265,7 +265,7 @@
   <view class='favrate-content'>
     <view class='favrate-space'></view>
     <view class='favrate-add'>
-      <image src="{{favImg}}" style='width:32px' mode='widthFix' bindtap='addfav' data-id="{{id}}" hidden='{{favHidden}}'></image>
+      <image src="{{favImg}}" style='width:32px' mode='widthFix' bindtap='addfav' data-id="{{favid}}" hidden='{{favHidden}}'></image>
     </view>
     <view class='favrate-share'>
       <button open-type="share" plain="true" style='border:0px'>

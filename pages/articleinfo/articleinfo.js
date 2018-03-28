@@ -77,7 +77,7 @@ Page({
   onLoad: function (options) {
     self = this;
     wx.request({
-      url: 'https://www.guzhenshuo.cc/api/english/showArticle/' + options.id, //仅为示例，并非真实的接口地址
+      url: util.getCurrentUrl()+'/api/english/showArticle/' + options.id, //仅为示例，并非真实的接口地址
       header: {
         'content-type': 'application/json' // 默认值
       },
@@ -95,7 +95,7 @@ Page({
           title: res.data.title
         });
         wx.request({
-          url: 'https://www.guzhenshuo.cc/api/english/getArticleWord/' + options.id,
+          url: util.getCurrentUrl()+'/api/english/getArticleWord/' + options.id,
           success: function (res1) {
             if (res1.data === undefined || res1.data.length == 0) {
               self.setData({
@@ -114,10 +114,11 @@ Page({
         });
         if (wx.getStorageSync('userInfo') != '') {
           wx.request({
-            url: 'https://www.guzhenshuo.cc/api/english/checkMyMotto/',
+            url: util.getCurrentUrl()+'/api/english/checkMyMotto/',
             data: {
               'openId': wx.getStorageSync('openid'),
-              'mottos_id': self.data['id']
+              'mottos_id': self.data['id'],
+              type:1
             },
             header: {
               'content-type': 'application/json' // 默认值
@@ -143,13 +144,14 @@ Page({
       if (wx.getStorageSync('userInfo') != '') {
         console.log('请求接口');
         wx.request({
-          url: 'https://www.guzhenshuo.cc/api/english/addMyMotto/', //仅为示例，并非真实的接口地址
+          url: util.getCurrentUrl()+'/api/english/addMyMotto/', //仅为示例，并非真实的接口地址
           header: {
             'content-type': 'application/json' // 默认值
           },
           data: {
             openId: wx.getStorageSync('openid'),
-            mottos_id: e.currentTarget.dataset.id
+            mottos_id: e.currentTarget.dataset.id,
+            type:1
           },
           method: 'POST',
           success: function (res) {
@@ -168,13 +170,14 @@ Page({
     }
     else {
       wx.request({
-        url: 'https://www.guzhenshuo.cc/api/english/DelMyMotto/', //仅为示例，并非真实的接口地址
+        url: util.getCurrentUrl()+'/api/english/DelMyMotto/', //仅为示例，并非真实的接口地址
         header: {
           'content-type': 'application/json' // 默认值
         },
         data: {
           openId: wx.getStorageSync('openid'),
-          mottos_id: e.currentTarget.dataset.id
+          mottos_id: e.currentTarget.dataset.id,
+          type:1
         },
         method: 'POST',
         success: function (res) {

@@ -28,6 +28,7 @@ Page({
     video_size: '0MB',
     video_Mode: '标清',
     video_content_height: '225',
+    id: '',
     hidden: false
   },
 
@@ -81,6 +82,57 @@ Page({
 
   },
 
+  addfav: function (e) {
+    if (self.data['favImg'] == '/images/control/fav.png') {
+      if (wx.getStorageSync('userInfo') != '') {
+        console.log('请求接口');
+        wx.request({
+          url: util.getCurrentUrl() + '/api/english/addMyMotto/', //仅为示例，并非真实的接口地址
+          header: {
+            'content-type': 'application/json' // 默认值
+          },
+          data: {
+            openId: wx.getStorageSync('openid'),
+            mottos_id: e.currentTarget.dataset.id,
+            type: 2
+          },
+          method: 'POST',
+          success: function (res) {
+            self.setData({
+              favImg: '/images/control/fav1.png',
+            });
+            console.log(res.data.result)
+          }
+        });
+      }
+      else {
+        console.log('未授权，获取授权');
+        util.getlogin();
+        util.getUsersAll();
+      }
+    }
+    else {
+      wx.request({
+        url: util.getCurrentUrl() + '/api/english/DelMyMotto/', //仅为示例，并非真实的接口地址
+        header: {
+          'content-type': 'application/json' // 默认值
+        },
+        data: {
+          openId: wx.getStorageSync('openid'),
+          mottos_id: e.currentTarget.dataset.id,
+          type: 2
+        },
+        method: 'POST',
+        success: function (res) {
+          self.setData({
+            favImg: '/images/control/fav.png',
+          });
+          console.log(res.data)
+        }
+      });
+    }
+
+  },
   /**
    * 用户点击右上角分享
    */
@@ -129,7 +181,7 @@ Page({
 
 function getFilmInfo(id) {
   wx.request({
-    url: 'https://www.guzhenshuo.cc/api/english/showVideo/' + id,
+    url: util.getCurrentUrl()+'/api/english/showVideo/' + id,
     header: {
       'content-type': 'application/json' // 默认值
     },
@@ -177,13 +229,14 @@ function getFilmInfo(id) {
         video_dialog_bg: res.data.video_dialog_bg,
         video_dialog_english: res.data.video_dialog_english,
         video_dialog_chinese: res.data.video_dialog_chinese,
-        video_goldenSentence: res.data.video_goldenSentence
+        video_goldenSentence: res.data.video_goldenSentence,
+        id: res.data.id
       });
       wx.setNavigationBarTitle({
         title: res.data.video_title
       });
       wx.request({
-        url: 'https://www.guzhenshuo.cc/api/english/getVideoWord/' + res.data.id,
+        url: util.getCurrentUrl()+'/api/english/getVideoWord/' + res.data.id,
         success: function (res1) {
           if (res1.data === undefined || res1.data.length == 0) {
             self.setData({
@@ -199,6 +252,29 @@ function getFilmInfo(id) {
           }
         }
       });
+      if (wx.getStorageSync('userInfo') != '') {
+        wx.request({
+          url: util.getCurrentUrl() + '/api/english/checkMyMotto/',
+          data: {
+            'openId': wx.getStorageSync('openid'),
+            'mottos_id': self.data['id'],
+            type: 2
+          },
+          header: {
+            'content-type': 'application/json' // 默认值
+          },
+          method: 'POST',
+          success: function (res) {
+            if (res.data.result == '1') {
+              self.setData({
+                favImg: '/images/control/fav1.png'
+              })
+            }
+
+            console.log("来自收藏:" + res.data.result);
+          }
+        })
+      }
     }
   });
 }

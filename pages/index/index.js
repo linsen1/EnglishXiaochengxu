@@ -11,6 +11,7 @@ Page({
     'englishWord': '',
     'xiaobian': '',
     'id': '',
+    'favid': '',
     'audio': '',
     'progress': '0',
     'playimg': '/images/control/play.png',
@@ -24,36 +25,36 @@ Page({
     favImg: '/images/control/fav.png',
     yinbiaoMp3Img: '/images/control/laba1.png',
     hidden: false,
-    hidden1:false,
-    ArticleWordHidden:false,
-    words1:'',
-    NavHidden:false,
+    hidden1: false,
+    ArticleWordHidden: false,
+    words1: '',
+    NavHidden: false,
     NavHidden1: true,
     NavHidden2: true,
-    nav2:'nav2',
+    nav2: 'nav2',
     nav3: 'nav1',
     nav1: 'nav1',
-    loadFilm:false,
-    loadArticle:false,
+    loadFilm: false,
+    loadArticle: false,
     videoID: '',
-    video_title:'',
-    video_poster:'',
-    video_SDdataSize:'',
-    video_HDdataSize:'',
-    video_FHDdataSize:'',
-    video_SDURL:'',
-    video_HDURL:'',
-    video_FHDURL:'',
-    video_introduce:'',
-    video_dialog_bg:'',
-    video_dialog_english:'',
-    video_dialog_chinese:'',
-    video_goldenSentence:'',
+    video_title: '',
+    video_poster: '',
+    video_SDdataSize: '',
+    video_HDdataSize: '',
+    video_FHDdataSize: '',
+    video_SDURL: '',
+    video_HDURL: '',
+    video_FHDURL: '',
+    video_introduce: '',
+    video_dialog_bg: '',
+    video_dialog_english: '',
+    video_dialog_chinese: '',
+    video_goldenSentence: '',
     video_URL: '',
     video_size: '0MB',
     video_Mode: '标清',
-    video_content_height:'324',
-    favHidden:false,
+    video_content_height: '324',
+    favHidden: false,
     picUrl: '',
     chineseContent: '',
     englishContent: '',
@@ -61,7 +62,7 @@ Page({
     articlID: '',
     title: '',
     mp3URL: '',
-    words2: '',
+    words2: ''
   },
   onReady: function (e) {
     this.audioCtx = wx.createAudioContext('audio');
@@ -157,11 +158,12 @@ Page({
     self = this;
     getinfo();
   },
-  changeNav:function(){
-    if(self.data['NavHidden']==true){
+  changeNav: function () {
+    getinfo();
+    if (self.data['NavHidden'] == true) {
       self.setData({
-        NavHidden:false,
-        NavHidden1:true,
+        NavHidden: false,
+        NavHidden1: true,
         NavHidden2: true,
         nav2: 'nav2',
         nav1: 'nav1',
@@ -171,6 +173,7 @@ Page({
     }
   },
   changeNav2: function () {
+    getArticleInfo();
     if (self.data['NavHidden2'] == true) {
       self.setData({
         NavHidden: true,
@@ -179,12 +182,13 @@ Page({
         nav2: 'nav1',
         nav3: 'nav2',
         nav1: 'nav1',
-        favHidden: true
+        favHidden: false
       })
     }
-    getArticleInfo();
+
   },
   changeNav1: function () {
+    getNewsInfo();
     if (self.data['NavHidden1'] == true) {
       self.setData({
         NavHidden: true,
@@ -193,29 +197,40 @@ Page({
         nav2: 'nav1',
         nav1: 'nav2',
         nav3: 'nav1',
-        favHidden:true
+        favHidden: false
       })
     }
-    getNewsInfo();
+
   },
   addfav: function (e) {
+    var type = 0;
+    if (this.data.NavHidden == false) {
+      type = 0;
+    }
+    else if (this.data.NavHidden1 == false) {
+      type = 2;
+    }
+    else if (this.data.NavHidden2 == false) {
+      type = 1;
+    }
     if (self.data['favImg'] == '/images/control/fav.png') {
       if (wx.getStorageSync('userInfo') != '') {
         console.log('请求接口');
         wx.request({
-          url: 'https://www.guzhenshuo.cc/api/english/addMyMotto/', //仅为示例，并非真实的接口地址
+          url: util.getCurrentUrl() + '/api/english/addMyMotto/', //仅为示例，并非真实的接口地址
           header: {
             'content-type': 'application/json' // 默认值
           },
           data: {
             openId: wx.getStorageSync('openid'),
-            mottos_id: e.currentTarget.dataset.id
+            mottos_id: e.currentTarget.dataset.id,
+            type: type
           },
           method: 'POST',
-          success: function (res) {        
-              self.setData({
-                favImg: '/images/control/fav1.png',
-              });
+          success: function (res) {
+            self.setData({
+              favImg: '/images/control/fav1.png',
+            });
             console.log(res.data.result)
           }
         });
@@ -227,14 +242,16 @@ Page({
       }
     }
     else {
+
       wx.request({
-        url: 'https://www.guzhenshuo.cc/api/english/DelMyMotto/', //仅为示例，并非真实的接口地址
+        url: util.getCurrentUrl() + '/api/english/DelMyMotto/', //仅为示例，并非真实的接口地址
         header: {
           'content-type': 'application/json' // 默认值
         },
         data: {
           openId: wx.getStorageSync('openid'),
-          mottos_id: e.currentTarget.dataset.id
+          mottos_id: e.currentTarget.dataset.id,
+          type: type
         },
         method: 'POST',
         success: function (res) {
@@ -243,23 +260,23 @@ Page({
           });
           console.log(res.data)
         }
-      });  
+      });
     }
 
   },
   onShareAppMessage: function (res) {
     var that = this;
-    var shareTitle ='每天读些英文';
+    var shareTitle = '每天读些英文';
     var shareUrl = '/pages/info/info?id=' + this.data.id;
-    if (this.data.NavHidden==false){
+    if (this.data.NavHidden == false) {
       shareTitle = '每天读些英文';
       shareUrl = '/pages/info/info?id=' + this.data.id;
     }
-    else if (this.data.NavHidden1 == false){
+    else if (this.data.NavHidden1 == false) {
       shareTitle = this.data.video_title;;
       shareUrl = '/pages/filminfo/filminfo?id=' + this.data.videoID;
     }
-    else if (this.data.NavHidden2 == false){
+    else if (this.data.NavHidden2 == false) {
       shareTitle = this.data.title;
       shareUrl = '/pages/articleinfo/articleinfo?id=' + this.data.articlID;
     }
@@ -287,11 +304,10 @@ Page({
   }
 });
 
-function getNewsInfo(){
-  if (self.data['loadFilm']==false)
-  {
+function getNewsInfo() {
+
     wx.request({
-      url: 'https://www.guzhenshuo.cc/api/english/newVideo',
+      url: util.getCurrentUrl() + '/api/english/newVideo',
       header: {
         'content-type': 'application/json' // 默认值
       },
@@ -299,8 +315,8 @@ function getNewsInfo(){
         wx.getSystemInfo({
           success: function (res2) {
             self.setData({
-              video_content_height: res2.windowHeight-34-225-40
-            })      
+              video_content_height: res2.windowHeight - 34 - 225 - 40
+            })
           }
         })
         wx.getNetworkType({
@@ -312,7 +328,7 @@ function getNewsInfo(){
               self.setData({
                 video_URL: res.data[0].video_FHDURL,
                 video_size: res.data[0].video_FHDdataSize,
-                video_Mode:'超清'
+                video_Mode: '超清'
               });
 
             }
@@ -329,6 +345,7 @@ function getNewsInfo(){
         self.setData({
           video_title: res.data[0].video_title,
           videoID: res.data[0].id,
+          favid: res.data[0].id,
           video_poster: res.data[0].video_poster,
           video_SDdataSize: res.data[0].video_SDdataSize,
           video_HDdataSize: res.data[0].video_HDdataSize,
@@ -342,8 +359,34 @@ function getNewsInfo(){
           video_dialog_chinese: res.data[0].video_dialog_chinese,
           video_goldenSentence: res.data[0].video_goldenSentence
         });
+        if (wx.getStorageSync('userInfo') != '') {
+          wx.request({
+            url: util.getCurrentUrl() + '/api/english/checkMyMotto/',
+            data: {
+              'openId': wx.getStorageSync('openid'),
+              'mottos_id': self.data['videoID'],
+              type: 2
+            },
+            header: {
+              'content-type': 'application/json' // 默认值
+            },
+            method: 'POST',
+            success: function (res) {
+              if (res.data.result == '1') {
+                self.setData({
+                  favImg: '/images/control/fav1.png'
+                })
+              } else {
+                self.setData({
+                  favImg: '/images/control/fav.png'
+                })
+              }
+              console.log("来自收藏:" + res.data.result)
+            }
+          })
+        }
         wx.request({
-          url: 'https://www.guzhenshuo.cc/api/english/getVideoWord/' + res.data[0].id,
+          url: util.getCurrentUrl() + '/api/english/getVideoWord/' + res.data[0].id,
           success: function (res1) {
             if (res1.data === undefined || res1.data.length == 0) {
               self.setData({
@@ -359,19 +402,18 @@ function getNewsInfo(){
             }
           }
         });
+        self.setData({
+          loadFilm: true
+        });
       }
     });
-    self.setData({
-      loadFilm:true
-    });
- 
-  }
 }
 
-function getArticleInfo(){
-  if (self.data['loadArticle'] == false){
+
+function getArticleInfo() {
+  
     wx.request({
-      url: 'https://www.guzhenshuo.cc/api/english/NewArticle', //仅为示例，并非真实的接口地址
+      url: util.getCurrentUrl() + '/api/english/NewArticle', //仅为示例，并非真实的接口地址
       header: {
         'content-type': 'application/json' // 默认值
       },
@@ -383,10 +425,38 @@ function getArticleInfo(){
           'note': res.data[0].note,
           'mp3URL': res.data[0].mp3URL,
           'articlID': res.data[0].id,
+          'favid': res.data[0].id,
           'title': res.data[0].title
         });
+        if (wx.getStorageSync('userInfo') != '') {
+          wx.request({
+            url: util.getCurrentUrl() + '/api/english/checkMyMotto/',
+            data: {
+              'openId': wx.getStorageSync('openid'),
+              'mottos_id': self.data['articlID'],
+              type: 1
+            },
+            header: {
+              'content-type': 'application/json' // 默认值
+            },
+            method: 'POST',
+            success: function (res) {
+              if (res.data.result == '1') {
+                self.setData({
+                  favImg: '/images/control/fav1.png'
+                })
+              } else {
+                self.setData({
+
+                  favImg: '/images/control/fav.png'
+                })
+              }
+              console.log("来自收藏:" + res.data.result)
+            }
+          })
+        }
         wx.request({
-          url: 'https://www.guzhenshuo.cc/api/english/getArticleWord/' + res.data[0].id,
+          url: util.getCurrentUrl() + '/api/english/getArticleWord/' + res.data[0].id,
           success: function (res1) {
             if (res1.data === undefined || res1.data.length == 0) {
               self.setData({
@@ -408,13 +478,13 @@ function getArticleInfo(){
         });
       }
     })
-  }
 }
+
 
 function getinfo() {
   wx.showNavigationBarLoading();
   wx.request({
-    url: 'https://www.guzhenshuo.cc/api/new/', //仅为示例，并非真实的接口地址
+    url: util.getCurrentUrl() + '/api/new/', //仅为示例，并非真实的接口地址
     header: {
       'content-type': 'application/json' // 默认值
     },
@@ -425,10 +495,11 @@ function getinfo() {
         'englishWord': res.data[0].englishWord,
         'xiaobian': res.data[0].xiaobian,
         'id': res.data[0].id,
+        favid: res.data[0].id,
         'audio': res.data[0].audio
       });
       wx.request({
-        url: 'https://www.guzhenshuo.cc/api/english/getword/' + res.data[0].id,
+        url: util.getCurrentUrl() + '/api/english/getword/' + res.data[0].id,
         success: function (res1) {
           if (res1.data === undefined || res1.data.length == 0) {
             self.setData({
@@ -446,10 +517,11 @@ function getinfo() {
       });
       if (wx.getStorageSync('userInfo') != '') {
         wx.request({
-          url: 'https://www.guzhenshuo.cc/api/english/checkMyMotto/',
+          url: util.getCurrentUrl() + '/api/english/checkMyMotto/',
           data: {
             'openId': wx.getStorageSync('openid'),
-            'mottos_id': self.data['id']
+            'mottos_id': self.data['id'],
+            type: 0
           },
           header: {
             'content-type': 'application/json' // 默认值
@@ -460,12 +532,15 @@ function getinfo() {
               self.setData({
                 favImg: '/images/control/fav1.png'
               })
+            } else {
+              self.setData({
+                favImg: '/images/control/fav.png'
+              })
             }
-            console.log("来自收藏:"+res.data.result)
+            console.log("来自收藏:" + res.data.result)
           }
         })
       }
-
     },
     complete: function () {
       wx.hideNavigationBarLoading();
