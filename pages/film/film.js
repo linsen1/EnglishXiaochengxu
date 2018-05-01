@@ -1,5 +1,6 @@
 // pages/his/his.js
 var self, page = 1;
+const util = require('../../utils/util.js')
 Page({
 
   /**
@@ -74,7 +75,7 @@ function getlistMore() {
   self.setData({ 'loadingMoreHidden': false });
   wx.showNavigationBarLoading();
   wx.request({
-    url: 'https://www.guzhenshuo.cc/api/english/getVideoList?page=' + page,
+    url: util.getCurrentUrl()+'/api/english/getVideoList?page=' + page,
     method: 'GET',
     header: {
       'content-type': 'application/json' // 默认值
@@ -105,7 +106,7 @@ function getlist() {
   page = 1;
   wx.showNavigationBarLoading();
   wx.request({
-    url: 'https://www.guzhenshuo.cc/api/english/getVideoList?page=' + page,
+    url: util.getCurrentUrl()+'/api/english/getVideoList?page=' + page,
     method: 'GET',
     header: {
       'content-type': 'application/json' // 默认值

@@ -62,7 +62,13 @@ Page({
     articlID: '',
     title: '',
     mp3URL: '',
-    words2: ''
+    words2: '',
+    sentence: '',
+    sentenceHidden: true,
+    Articlesentence: '',
+    ArticlesentenceHidden: true,
+    Filmsentence: '',
+    FilmsentenceHidden: true,
   },
   onReady: function (e) {
     this.audioCtx = wx.createAudioContext('audio');
@@ -86,6 +92,17 @@ Page({
     });
     this.audioMp3 = null;
     console.log(e.currentTarget.dataset.id + '_1');
+  },
+  sentencePlayMp3: function (e) {
+    this.sentenceaudioMp3 = wx.createAudioContext('sentenceAudio' + e.currentTarget.dataset.id);
+    this.sentenceaudioMp3.play();
+    console.log(e.currentTarget.dataset.id);
+    this.sentenceaudioMp3 = null;
+  },
+  sentenceplayMp3End: function () {
+    self.setData({
+      'yinbiaoMp3Img': '/images/control/laba1.png'
+    });
   },
   audioPlay: function () {
     if (this.data.playimg == '/images/control/play.png') {
@@ -359,6 +376,25 @@ function getNewsInfo() {
           video_dialog_chinese: res.data[0].video_dialog_chinese,
           video_goldenSentence: res.data[0].video_goldenSentence
         });
+        wx.request({
+          url: util.getCurrentUrl() + '/api/english/getSentence/refID/' + res.data[0].id + '/type/1',
+          success: function (res2) {
+            if (res2.data === undefined || res2.data.length == 0) {
+              self.setData({
+                FilmsentenceHidden: true
+              });
+
+            }
+            else {
+              self.setData({
+                FilmsentenceHidden: false,
+                Filmsentence: res2.data
+              });
+
+            }
+            console.log('短语区域：' + self.data['FilmsentenceHidden']);
+          }
+        });
         if (wx.getStorageSync('userInfo') != '') {
           wx.request({
             url: util.getCurrentUrl() + '/api/english/checkMyMotto/',
@@ -427,6 +463,25 @@ function getArticleInfo() {
           'articlID': res.data[0].id,
           'favid': res.data[0].id,
           'title': res.data[0].title
+        });
+        wx.request({
+          url: util.getCurrentUrl() + '/api/english/getSentence/refID/' + res.data[0].id + '/type/2',
+          success: function (res2) {
+            if (res2.data === undefined || res2.data.length == 0) {
+              self.setData({
+                ArticlesentenceHidden: true
+              });
+
+            }
+            else {
+              self.setData({
+                ArticlesentenceHidden: false,
+                Articlesentence: res2.data
+              });
+
+            }
+            console.log('短语区域：' + self.data['ArticlesentenceHidden']);
+          }
         });
         if (wx.getStorageSync('userInfo') != '') {
           wx.request({
@@ -513,6 +568,25 @@ function getinfo() {
             });
             console.log(res1.data);
           }
+        }
+      });
+      wx.request({
+        url: util.getCurrentUrl() + '/api/english/getSentence/refID/' + res.data[0].id + '/type/0',
+        success: function (res2) {
+          if (res2.data === undefined || res2.data.length == 0) {
+            self.setData({
+              sentenceHidden: true
+            });
+
+          }
+          else {
+            self.setData({
+              sentenceHidden: false,
+              sentence: res2.data
+            });
+
+          }
+          console.log('短语区域：' + self.data['sentenceHidden']);
         }
       });
       if (wx.getStorageSync('userInfo') != '') {

@@ -48,7 +48,6 @@ const getUserInfo = function (openID, callback) {
       var encryptedData = res.encryptedData;
       var iv = res.iv;
       var userInfo = res.userInfo;
-      userInfo.openId = openID;
       wx.setStorageSync('userInfo', userInfo);
       if (callback != null) {
         callback();
@@ -114,11 +113,9 @@ const getUsersAll = function (callback) {
                       success: (res) => {
                         console.log(res.authSetting);
                         if (callback != null) {
-
                           getUserInfo(wx.getStorageSync('openid'), callback);
                         }
                         else {
-
                           getUserInfo(wx.getStorageSync('openid'));
                         }
                         console.log("openid:" + wx.getStorageSync('openid'));

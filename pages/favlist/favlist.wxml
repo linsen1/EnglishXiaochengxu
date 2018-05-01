@@ -1,0 +1,38 @@
+<!--pages/favlist/favlist.wxml-->
+<view class="container">
+<view class='BR'></view>
+
+  <view class='myinfo' bindtap='gomysentence'>
+    <view class='my_ico'>
+      <image src='/images/nav/lishi.png' style="width:24px" mode='widthFix'></image>
+    </view>
+    <view class='my_txt'>
+      名句
+    </view>
+    <view class='my_jiantou'>
+      <image src='/images/control/jiantou.png' style="width:24px" mode='widthFix'></image>
+    </view>
+  </view>
+  <view class='myinfo' bindtap='gomyarticle'>
+    <view class='my_ico'>
+      <image src='/images/nav/article.png' style="width:24px" mode='widthFix'></image>
+    </view>
+    <view class='my_txt'>
+      美文
+    </view>
+    <view class='my_jiantou'>
+      <image src='/images/control/jiantou.png' style="width:24px" mode='widthFix'></image>
+    </view>
+  </view>
+   <view class='myinfo' bindtap='gomyfilm'>
+    <view class='my_ico'>
+      <image src='/images/nav/film.png' style="width:24px" mode='widthFix'></image>
+    </view>
+    <view class='my_txt'>
+      影视
+    </view>
+    <view class='my_jiantou'>
+      <image src='/images/control/jiantou.png' style="width:24px" mode='widthFix'></image>
+    </view>
+  </view>
+</view>

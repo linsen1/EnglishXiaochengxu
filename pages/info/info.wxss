@@ -163,6 +163,36 @@
 .favrate-right{
   width: 2%;
 }
-.englishWord{
-  margin-bottom: 40px;
+
+.sentences{
+  text-align: left;
+  background-color: white;
+  margin-bottom: 2px;
+  padding-left: 6px;
+}
+.sentenceEN{
+  display: flex;
+  flex-direction: row;
+  padding-top: 4px;
+}
+.sentenceENWord{
+  text-align: left;
+  width: 80%;
+  font-size: 13pt;
+  padding-left: 2px;
+}
+.sentencelaba{
+  text-align: left;
+  width: 20%;
+}
+.sentenceCN{
+  text-align: left;
+  padding-top: 2px;
+  padding-bottom:4px;
+}
+.sentenceCNWord{
+  font-size: 11pt;
+  color:#888;
+  text-align: justify;
+  padding-left: 2px;
 }

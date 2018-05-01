@@ -1,6 +1,6 @@
-// pages/his/his.js
+// pages/myarticle/myarticle.js
 var self, page = 1;
-const util = require('../../utils/util.js')
+const util = require('../../utils/util.js');
 Page({
 
   /**
@@ -60,14 +60,12 @@ Page({
    */
   onReachBottom: function () {
     getlistMore();
-  },
+  }
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
 
-  }
 })
 
 function getlistMore() {
@@ -75,10 +73,15 @@ function getlistMore() {
   self.setData({ 'loadingMoreHidden': false });
   wx.showNavigationBarLoading();
   wx.request({
-    url: util.getCurrentUrl()+'/api/english/getArticleList?page=' + page,
-    method: 'GET',
+    url: util.getCurrentUrl() + '/api/english/GetMyMottoList?page=' + page,
+    method: 'POST',
     header: {
       'content-type': 'application/json' // 默认值
+      
+    },
+    data: {
+      openId: wx.getStorageSync('openid'),
+      type:1
     },
     success: function (res) {
       if (page > res.data.last_page) {
@@ -106,13 +109,27 @@ function getlist() {
   page = 1;
   wx.showNavigationBarLoading();
   wx.request({
-    url: util.getCurrentUrl()+'/api/english/getArticleList?page=' + page,
-    method: 'GET',
+    url: util.getCurrentUrl() + '/api/english/GetMyMottoList?page=' + page,
+    method: 'POST',
     header: {
       'content-type': 'application/json' // 默认值
     },
+    data: {
+      openId: wx.getStorageSync('openid'),
+      type:1
+    },
     success: function (res) {
       self.setData({ 'info': res.data.data });
+      console.log(res.data.data.length)
+      if (res.data.data.length == 0) {
+        wx.showModal({
+          title: '信息提示',
+          content: '亲，您的收藏夹里还没有内容，赶紧收藏您喜欢的美文吧！',
+          showCancel: false,
+          confirmText: "知道了",
+          success: function (res) { }
+        });
+      }
       page++;
     },
     fail: function () {

@@ -38,15 +38,17 @@
     小编碎碎念
   </view>
   <view class='BR'></view>
-  <view class='xiaobian_content'><text>{{xiaobian}}</text></view>
+  <view class='xiaobian_content'>
+    <text>{{xiaobian}}</text>
+  </view>
 
-  <view class='BR' ></view>
+  <view class='BR'></view>
 
 
-  <view class='englishWord'   hidden='{{hidden}}'>
+  <view class='englishWord' hidden='{{hidden}}'>
 
     <view class='xiaobian'>
-      单词学习
+      单词
     </view>
     <view class='BR' style='height:10px'></view>
 
@@ -83,7 +85,25 @@
       </view>
     </view>
   </view>
-
+  <view class='sentencelist' hidden='{{sentenceHidden}}'>
+    <view class='xiaobian'>
+      短语
+    </view>
+    <view class='BR' style='height:10px'></view>
+    <view class='sentences' wx:for="{{sentence}}" wx:key="{{item.id}}">
+      <view class='sentenceEN'>
+        <view class='sentenceENWord'>{{item.EnWords}}</view>
+        <audio src="{{item.EnMp3}}" id="sentenceAudio{{item.id}}" bindended='sentenceplayMp3End'></audio>
+        <view class='sentencelaba' bindtap="sentencePlayMp3" data-id="{{item.id}}">
+          <image src="/images/control/laba1.png" style="width:22px" mode='widthFix'> </image>
+        </view>
+      </view>
+      <view class='sentenceCN'>
+        <view class='sentenceCNWord'>{{item.CnWords}}</view>
+      </view>
+    </view>
+  </view>
+  <view class='BR' style='height:40px'></view>
 </view>
 <view class="container" hidden='{{NavHidden2}}'>
   <view class="top">
@@ -96,7 +116,7 @@
   <view class='BR'></view>
   <view class='xiaobian_content'>{{note}}</view>
   <view class='BR'></view>
-    <audio src="{{mp3URL}}" id="audio1" bindended='playEnd1' bindtimeupdate="MusicStart1"></audio>
+  <audio src="{{mp3URL}}" id="audio1" bindended='playEnd1' bindtimeupdate="MusicStart1"></audio>
   <view class='audio'>
     <view class='controls'>
       <image src="{{playimg1}}" style='width:26px' mode='widthFix' bindtap="audioPlay1"></image>
@@ -109,25 +129,27 @@
     <view class='audiotime'>{{currentTime1}}/{{duration1}}</view>
   </view>
   <view class='BR'></view>
-   <view class='xiaobian'>
+  <view class='xiaobian'>
     英文
   </view>
   <view class='BR'></view>
   <view class='wordtext' style='text-align: justify;'>
-  <text>{{englishContent}}</text>
+    <text>{{englishContent}}</text>
   </view>
-    <view class='BR'></view>
-   <view class='xiaobian'>
+  <view class='BR'></view>
+  <view class='xiaobian'>
     译文
   </view>
   <view class='BR'></view>
-   <view class='wordtext'>
-  <view class='chinese' style='color: #888;font-size: 12pt;text-align: justify;'><text>{{chineseContent}}</text></view>
+  <view class='wordtext'>
+    <view class='chinese' style='color: #888;font-size: 12pt;text-align: justify;'>
+      <text>{{chineseContent}}</text>
+    </view>
   </view>
-    <view class='BR'  ></view>
+  <view class='BR'></view>
   <view class='englishWord' hidden='{{ArticleWordHidden}}'>
     <view class='xiaobian'>
-      单词学习
+      单词
     </view>
     <view class='BR' style='height:10px'></view>
 
@@ -165,6 +187,28 @@
 
     </view>
   </view>
+
+ <view class='sentencelist' hidden='{{ArticlesentenceHidden}}'>
+    <view class='xiaobian'>
+      短语
+    </view>
+    <view class='BR' style='height:10px'></view>
+    <view class='sentences' wx:for="{{Articlesentence}}" wx:key="{{item.id}}">
+      <view class='sentenceEN'>
+        <view class='sentenceENWord'>{{item.EnWords}}</view>
+        <audio src="{{item.EnMp3}}" id="sentenceAudio{{item.id}}" bindended='sentenceplayMp3End'></audio>
+        <view class='sentencelaba' bindtap="sentencePlayMp3" data-id="{{item.id}}">
+          <image src="/images/control/laba1.png" style="width:22px" mode='widthFix'> </image>
+        </view>
+      </view>
+      <view class='sentenceCN'>
+        <view class='sentenceCNWord'>{{item.CnWords}}</view>
+      </view>
+    </view>
+  </view>
+
+
+  <view class='BR' style='height:40px'></view>
 </view>
 <view class='container' hidden='{{NavHidden1}}'>
 
@@ -220,7 +264,7 @@
     <view class='englishWord' style='margin-bottom:10px' hidden='{{hidden1}}'>
 
       <view class='xiaobian'>
-        单词学习
+        单词
       </view>
       <view class='BR' style='height:4px'></view>
       <view class='words' wx:for="{{words1}}" wx:key="{{item.id}}">
@@ -251,11 +295,31 @@
 
         <view class='content'>
           <text>{{item.chinese}}</text>
-         <view class='BR'></view>
-         <view class='BR'></view>
+          <view class='BR'></view>
+          <view class='BR'></view>
         </view>
       </view>
     </view>
+
+    <view class='sentencelist' hidden='{{FilmsentenceHidden}}'>
+    <view class='xiaobian'>
+      短语
+    </view>
+    <view class='BR' style='height:10px'></view>
+    <view class='sentences' wx:for="{{Filmsentence}}" wx:key="{{item.id}}">
+      <view class='sentenceEN'>
+        <view class='sentenceENWord'>{{item.EnWords}}</view>
+        <audio src="{{item.EnMp3}}" id="sentenceAudio{{item.id}}" bindended='sentenceplayMp3End'></audio>
+        <view class='sentencelaba' bindtap="sentencePlayMp3" data-id="{{item.id}}">
+          <image src="/images/control/laba1.png" style="width:22px" mode='widthFix'> </image>
+        </view>
+      </view>
+      <view class='sentenceCN'>
+        <view class='sentenceCNWord'>{{item.CnWords}}</view>
+      </view>
+    </view>
+  </view>
+<view class='BR' style='height:10px'></view>
   </scroll-view>
 
 

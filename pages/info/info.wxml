@@ -34,7 +34,7 @@
   <view class='englishWord' hidden='{{hidden}}'>
 
     <view class='xiaobian'>
-      单词学习
+      单词
     </view>
     <view class='BR' style='height:10px'></view>
 
@@ -73,16 +73,38 @@
     </view>
   </view>
 
- 
-
-   <view class='favrate'>
-    <view class='favrate-content'>
-      <view class='favrate-space'></view>
-      <view class='favrate-add'><image src="{{favImg}}" style='width:32px' mode='widthFix' bindtap='addfav' data-id="{{id}}" ></image></view>
-       <view class='favrate-share'><button open-type="share" plain="true" style='border:0px'><image src='/images/control/fenxiang.png' style='width:32px' mode='widthFix' ></image></button></view>
-       <view class='favrate-right'></view>
+  <view class='sentencelist' hidden='{{sentenceHidden}}'>
+    <view class='xiaobian'>
+      短语
+    </view>
+    <view class='BR' style='height:10px'></view>
+    <view class='sentences' wx:for="{{sentence}}" wx:key="{{item.id}}">
+      <view class='sentenceEN'>
+        <view class='sentenceENWord'>{{item.EnWords}}</view>
+        <audio src="{{item.EnMp3}}" id="sentenceAudio{{item.id}}" bindended='sentenceplayMp3End'></audio>
+        <view class='sentencelaba' bindtap="sentencePlayMp3" data-id="{{item.id}}">
+          <image src="/images/control/laba1.png" style="width:22px" mode='widthFix'> </image>
+        </view>
+      </view>
+      <view class='sentenceCN'>
+        <view class='sentenceCNWord'>{{item.CnWords}}</view>
+      </view>
     </view>
   </view>
 
-  
+<view class='BR' style='height:40px'></view>
+  <view class='favrate'>
+    <view class='favrate-content'>
+      <view class='favrate-space'></view>
+      <view class='favrate-add'>
+        <image src="{{favImg}}" style='width:32px' mode='widthFix' bindtap='addfav' data-id="{{id}}"></image>
+      </view>
+      <view class='favrate-share'>
+        <button open-type="share" plain="true" style='border:0px'>
+          <image src='/images/control/fenxiang.png' style='width:32px' mode='widthFix'></image>
+        </button>
+      </view>
+      <view class='favrate-right'></view>
+    </view>
+  </view>
 </view>

@@ -29,7 +29,9 @@ Page({
     video_Mode: '标清',
     video_content_height: '225',
     id: '',
-    hidden: false
+    hidden: false,
+    sentence: '',
+    sentenceHidden: true
   },
 
   /**
@@ -172,6 +174,17 @@ Page({
     console.log(e.currentTarget.dataset.id + '_1');
     this.audioMp3 = null;
   },
+  sentencePlayMp3: function (e) {
+    this.sentenceaudioMp3 = wx.createAudioContext('sentenceAudio' + e.currentTarget.dataset.id);
+    this.sentenceaudioMp3.play();
+    console.log(e.currentTarget.dataset.id);
+    this.sentenceaudioMp3 = null;
+  },
+  sentenceplayMp3End: function () {
+    self.setData({
+      'yinbiaoMp3Img': '/images/control/laba1.png'
+    });
+  },
   playMp3End: function () {
     self.setData({
       'yinbiaoMp3Img': '/images/control/laba1.png'
@@ -186,11 +199,29 @@ function getFilmInfo(id) {
       'content-type': 'application/json' // 默认值
     },
     success: function (res) {
-     
-      wx.getSystemInfo({
+      wx.request({
+        url: util.getCurrentUrl() + '/api/english/getSentence/refID/' +id+ '/type/1',
         success: function (res2) {
+          if (res2.data === undefined || res2.data.length == 0) {
+            self.setData({
+              sentenceHidden: true
+            });
+
+          }
+          else {
+            self.setData({
+              sentenceHidden: false,
+              sentence: res2.data
+            });
+
+          }
+          console.log('短语区域：' + self.data['sentenceHidden']);
+        }
+      });
+      wx.getSystemInfo({
+        success: function (res3) {
           self.setData({
-            video_content_height: res2.windowHeight-225-40
+            video_content_height: res3.windowHeight-225-40
           })
         }
       })
