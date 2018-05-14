@@ -43,12 +43,7 @@
         "pagePath": "pages/article/article",
         "text": "美文"
       },
-      {
-        "iconPath": "images/nav/film0.png",
-        "selectedIconPath": "images/nav/film.png",
-        "pagePath": "pages/film/film",
-        "text": "影视"
-      },
+  
       {
         "iconPath": "images/nav/my0.png",
         "selectedIconPath": "images/nav/my.png",

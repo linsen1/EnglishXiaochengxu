@@ -63,3 +63,10 @@
   display: -webkit-flex; /* Safari */
   align-items:center;
 }
+.infoButton{
+  width: 160rpx;
+  height: 160rpx;
+  border:none;
+  position: absolute;
+  opacity:0
+}

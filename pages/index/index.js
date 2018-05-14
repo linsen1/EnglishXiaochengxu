@@ -17,6 +17,7 @@ Page({
     'playimg': '/images/control/play.png',
     'currentTime': '00:00',
     'duration': '00:00',
+    xiaobianHidden:true,
     progress1: '0',
     playimg1: '/images/control/play.png',
     currentTime1: '00:00',
@@ -174,6 +175,7 @@ Page({
   onLoad: function () {
     self = this;
     getinfo();
+    
   },
   changeNav: function () {
     getinfo();
@@ -231,7 +233,7 @@ Page({
       type = 1;
     }
     if (self.data['favImg'] == '/images/control/fav.png') {
-      if (wx.getStorageSync('userInfo') != '') {
+      if (wx.getStorageSync('openid') != '') {
         console.log('请求接口');
         wx.request({
           url: util.getCurrentUrl() + '/api/english/addMyMotto/', //仅为示例，并非真实的接口地址
@@ -254,8 +256,7 @@ Page({
       }
       else {
         console.log('未授权，获取授权');
-        util.getlogin();
-        util.getUsersAll();
+        util.getNewLogin();
       }
     }
     else {
@@ -395,7 +396,7 @@ function getNewsInfo() {
             console.log('短语区域：' + self.data['FilmsentenceHidden']);
           }
         });
-        if (wx.getStorageSync('userInfo') != '') {
+        if (wx.getStorageSync('openid') != '') {
           wx.request({
             url: util.getCurrentUrl() + '/api/english/checkMyMotto/',
             data: {
@@ -483,7 +484,7 @@ function getArticleInfo() {
             console.log('短语区域：' + self.data['ArticlesentenceHidden']);
           }
         });
-        if (wx.getStorageSync('userInfo') != '') {
+        if (wx.getStorageSync('openid') != '') {
           wx.request({
             url: util.getCurrentUrl() + '/api/english/checkMyMotto/',
             data: {
@@ -544,6 +545,11 @@ function getinfo() {
       'content-type': 'application/json' // 默认值
     },
     success: function (res) {
+      if (res.data[0].xiaobian){
+        self.setData({
+          xiaobianHidden:false
+        });
+      }
       self.setData({
         'pic': res.data[0].pic,
         'chineseWord': res.data[0].chineseWord,
@@ -589,7 +595,7 @@ function getinfo() {
           console.log('短语区域：' + self.data['sentenceHidden']);
         }
       });
-      if (wx.getStorageSync('userInfo') != '') {
+      if (wx.getStorageSync('openid') != '') {
         wx.request({
           url: util.getCurrentUrl() + '/api/english/checkMyMotto/',
           data: {

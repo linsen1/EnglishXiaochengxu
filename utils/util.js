@@ -25,11 +25,12 @@ const getlogin = function () {
     success: res => {
       if (res.code) {
         wx.request({
-          url: 'https://www.guzhenshuo.cc/weixin/onLogin/' + res.code,
+          url: getCurrentUrl() + '/weixin/onLogin/' + res.code,
           method: 'POST',
           success: function (res1) {
             wx.setStorageSync('openid', res1.data.openid);
-            console.log('log:' + res1.data);
+            console.log('log_openid:' + res1.data.openid);
+
           }
         })
       }
@@ -53,7 +54,7 @@ const getUserInfo = function (openID, callback) {
         callback();
       }
       wx.request({
-        url: 'https://www.guzhenshuo.cc/api/english/addUser',
+        url: getCurrentUrl() + '/api/english/addUser',
         method: 'POST',
         data: {
           openId: openID,
@@ -83,6 +84,7 @@ const getUserInfo = function (openID, callback) {
     }
   })
 }
+
 const getUsersAll = function (callback) {
   wx.getSetting({
     success: res => {
@@ -130,10 +132,90 @@ const getUsersAll = function (callback) {
     }
   })
 }
-const getCurrentUrl=function(){
-  var testURL='https://endemo.guzhenshuo.cc';
-  var Url='https://www.guzhenshuo.cc';
+
+const getCurrentUrl = function () {
+  var testURL = 'https://endemo.guzhenshuo.cc';
+  var Url = 'https://www.guzhenshuo.cc';
   return Url;
+}
+
+const getNewLogin = function () {
+  wx.login({
+    success: res => {
+      if (res.code) {
+        wx.request({
+          url: getCurrentUrl() + '/weixin/Login/OnlyGetOpenid',
+          method: 'POST',
+          data: {
+            code: res.code
+          },
+          success: function (res1) {
+            wx.setStorageSync('openid', res1.data.openid);
+            console.log('appLoad加载获取OpenID:' + res1.data.openid);
+            //向数据库写入用户信息OpenID
+            wx.request({
+              url: getCurrentUrl() + '/api/english/onlyAddUserOpenid',
+              method: 'POST',
+              data: {
+                openId: res1.data.openid,
+              },
+              header: {
+                'content-type': 'application/json' // 默认值
+              },
+              success: function (res2) {
+                console.log("根据openID更新用户登录信息：" + res2.data);
+                getNewInfo(res1.data.openid);
+              }
+            });
+
+          }
+        })
+      }
+    }
+  })
+}
+
+const getNewInfo=function(openID){
+  wx.getSetting({
+    success: res => {
+      if (res.authSetting['scope.userInfo']) {
+        // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+        wx.getUserInfo({
+          success: res => {
+            // 可以将 res 发送给后台解码出 unionId
+            wx.setStorageSync('userInfo', res.userInfo);
+            console.log("用户授权信息:"+wx.getStorageSync('userInfo'));
+            // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+            // 所以此处加入 callback 以防止这种情况
+           // if (this.userInfoReadyCallback) {
+             // this.userInfoReadyCallback(res)
+            //}
+            var userInfo = res.userInfo;
+            wx.request({
+              url: getCurrentUrl() + '/api/english/addUser',
+              method: 'POST',
+              data: {
+                openId: openID,
+                nickName: userInfo.nickName,
+                gender: userInfo.gender,
+                language: userInfo.language,
+                city: userInfo.city,
+                province: userInfo.province,
+                country: userInfo.country,
+                avatarUrl: userInfo.avatarUrl
+              },
+              header: {
+                'content-type': 'application/json' // 默认值
+              },
+              success: function (res) {
+                console.log("用户授权后更新详细用户信息："+res.data)
+              }
+            })
+          }
+        })
+      }
+    }
+  })
 }
 
 module.exports = {
@@ -142,5 +224,7 @@ module.exports = {
   getUserInfo: getUserInfo,
   getlogin: getlogin,
   getUsersAll: getUsersAll,
-  getCurrentUrl: getCurrentUrl
+  getCurrentUrl: getCurrentUrl,
+  getNewLogin: getNewLogin,
+  getNewInfo: getNewInfo
 }

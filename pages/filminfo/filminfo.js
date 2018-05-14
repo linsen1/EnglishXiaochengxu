@@ -86,7 +86,7 @@ Page({
 
   addfav: function (e) {
     if (self.data['favImg'] == '/images/control/fav.png') {
-      if (wx.getStorageSync('userInfo') != '') {
+      if (wx.getStorageSync('openid') != '') {
         console.log('请求接口');
         wx.request({
           url: util.getCurrentUrl() + '/api/english/addMyMotto/', //仅为示例，并非真实的接口地址
@@ -109,8 +109,7 @@ Page({
       }
       else {
         console.log('未授权，获取授权');
-        util.getlogin();
-        util.getUsersAll();
+        util.getNewLogin();
       }
     }
     else {
@@ -283,7 +282,7 @@ function getFilmInfo(id) {
           }
         }
       });
-      if (wx.getStorageSync('userInfo') != '') {
+      if (wx.getStorageSync('openid') != '') {
         wx.request({
           url: util.getCurrentUrl() + '/api/english/checkMyMotto/',
           data: {

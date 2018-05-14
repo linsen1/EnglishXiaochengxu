@@ -11,14 +11,14 @@
 
 .nav1 {
   font-size: 14pt;
-  width: 33%;
+  width: 50%;
   text-align: center;
   color: #888;
   
 }
 .nav2 {
   font-size: 14pt;
-  width: 33%;
+  width: 50%;
   text-align: center;
   color: #ea4961;
   border-bottom: 1px solid #ea4961; 

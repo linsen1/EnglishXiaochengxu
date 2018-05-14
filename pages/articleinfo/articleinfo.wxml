@@ -44,7 +44,7 @@
   <view class='BR'></view>
   <view class='englishWord' hidden='{{hidden}}'>
     <view class='xiaobian'>
-      单词学习
+      单词
     </view>
     <view class='BR' style='height:10px'></view>
 
