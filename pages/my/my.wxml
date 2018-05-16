@@ -17,6 +17,18 @@
   </view>
   <view class='BR'></view>
 
+    <view class='myinfo' bindtap='giveMoney'>
+    <view class='my_ico'>
+      <image src='/images/control/money.png' style="width:26px" mode='widthFix'></image>
+    </view>
+    <view class='my_txt'>
+      打赏开发者
+    </view>
+    <view class='my_jiantou'>
+      <image src='/images/control/jiantou.png' style="width:24px" mode='widthFix'></image>
+    </view>
+  </view>
+
   <view class='myinfo' bindtap='gomymotto'>
     <view class='my_ico'>
       <image src='/images/control/fav1.png' style="width:24px" mode='widthFix'></image>
@@ -29,6 +41,17 @@
     </view>
   </view>
 
+  <view class='myinfo' bindtap='gofilm'>
+    <view class='my_ico'>
+      <image src='/images/control/find.png' style="width:26px" mode='widthFix'></image>
+    </view>
+    <view class='my_txt'>
+      发现
+    </view>
+    <view class='my_jiantou'>
+      <image src='/images/control/jiantou.png' style="width:24px" mode='widthFix'></image>
+    </view>
+  </view>
 
 
   <view class='BR'></view>

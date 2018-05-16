@@ -1,0 +1,17 @@
+<!--pages/find/find.wxml-->
+<!--pages/favlist/favlist.wxml-->
+<view class="container">
+<view class='BR'></view>
+
+   <view class='myinfo' bindtap='gomyfilm'>
+    <view class='my_ico'>
+      <image src='/images/nav/film.png' style="width:24px" mode='widthFix'></image>
+    </view>
+    <view class='my_txt'>
+      看影视学英文
+    </view>
+    <view class='my_jiantou'>
+      <image src='/images/control/jiantou.png' style="width:24px" mode='widthFix'></image>
+    </view>
+  </view>
+</view>

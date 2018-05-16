@@ -12,7 +12,8 @@
     "pages/articleinfo/articleinfo",
     "pages/favlist/favlist",
     "pages/myarticle/myarticle",
-    "pages/myfilm/myfilm"
+    "pages/myfilm/myfilm",
+    "pages/find/find"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -43,7 +44,6 @@
         "pagePath": "pages/article/article",
         "text": "美文"
       },
-  
       {
         "iconPath": "images/nav/my0.png",
         "selectedIconPath": "images/nav/my.png",
