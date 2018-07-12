@@ -29,7 +29,7 @@
       <image src='/images/nav/film.png' style="width:24px" mode='widthFix'></image>
     </view>
     <view class='my_txt'>
-      看影视学英文
+      跟着大片学英文
     </view>
     <view class='my_jiantou'>
       <image src='/images/control/jiantou.png' style="width:24px" mode='widthFix'></image>

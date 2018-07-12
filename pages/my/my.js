@@ -36,7 +36,7 @@ Page({
       });
     } else {
       wx.navigateTo({
-        url: '../find/find'
+        url: '../film/film'
       })
     }
   },

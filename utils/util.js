@@ -136,7 +136,7 @@ const getUsersAll = function (callback) {
 const getCurrentUrl = function () {
   var testURL = 'https://endemo.guzhenshuo.cc';
   var Url = 'https://www.guzhenshuo.cc';
-  return Url;
+  return testURL;
 }
 
 const getNewLogin = function () {

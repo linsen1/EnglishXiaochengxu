@@ -28,7 +28,6 @@
       <image src='/images/control/jiantou.png' style="width:24px" mode='widthFix'></image>
     </view>
   </view>
-
   <view class='myinfo' bindtap='gomymotto'>
     <view class='my_ico'>
       <image src='/images/control/fav1.png' style="width:24px" mode='widthFix'></image>
@@ -41,12 +40,26 @@
     </view>
   </view>
 
+<view class='BR'></view>
+<view class='BR'></view>
+<view class='BR'></view>
   <view class='myinfo' bindtap='gofilm'>
     <view class='my_ico'>
-      <image src='/images/control/find.png' style="width:26px" mode='widthFix'></image>
+      <image src='/images/nav/film.png' style="width:22px" mode='widthFix'></image>
     </view>
     <view class='my_txt'>
-      发现
+      跟着大片学英文
+    </view>
+    <view class='my_jiantou'>
+      <image src='/images/control/jiantou.png' style="width:24px" mode='widthFix'></image>
+    </view>
+  </view>
+    <view class='myinfo' bindtap='gofilm'>
+    <view class='my_ico'>
+      <image src='/images/control/yinbiao.png' style="width:26px" mode='widthFix'></image>
+    </view>
+    <view class='my_txt'>
+      音标小课堂
     </view>
     <view class='my_jiantou'>
       <image src='/images/control/jiantou.png' style="width:24px" mode='widthFix'></image>
@@ -56,7 +69,7 @@
 
   <view class='BR'></view>
   <view class='BR'></view>
-  <view class='BR'></view>
+ 
   <view>
     <button open-type="contact">
       意见反馈
