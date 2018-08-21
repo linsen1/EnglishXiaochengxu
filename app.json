@@ -13,7 +13,10 @@
     "pages/favlist/favlist",
     "pages/myarticle/myarticle",
     "pages/myfilm/myfilm",
-    "pages/find/find"
+    "pages/find/find",
+    "pages/symbols/index/index",
+    "pages/symbols/info/info",
+    "pages/song/info/info"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -51,5 +54,11 @@
         "text": "我的"
       }
     ]
+  },
+  "plugins": {
+    "htmltowxml": {
+      "version": "1.3.0",
+      "provider": "wxa51b9c855ae38f3c"
+    }
   }
 }

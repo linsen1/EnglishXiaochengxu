@@ -54,7 +54,7 @@
       <image src='/images/control/jiantou.png' style="width:24px" mode='widthFix'></image>
     </view>
   </view>
-    <view class='myinfo' bindtap='gofilm'>
+    <view class='myinfo' bindtap='gosymbols'>
     <view class='my_ico'>
       <image src='/images/control/yinbiao.png' style="width:26px" mode='widthFix'></image>
     </view>

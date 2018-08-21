@@ -218,13 +218,39 @@ const getNewInfo=function(openID){
   })
 }
 
+const URLconfig={
+  service:{
+    symbolList: `${getCurrentUrl()}/front/symbol/symbolBaseList`,
+    symbolBase: `${getCurrentUrl()}/front/symbol/symbolBase/`,
+    //音标基本信息内容
+    symbolinfo: `${getCurrentUrl()}/front/symbol/symbolBaseContent/`,
+    //音标字母组合
+    symbolwordgroup: `${getCurrentUrl()}/front/symbol/symbolWordsGroup/`,
+    //音标单词精读列表
+    symbolwordslist: `${getCurrentUrl()}/front/symbol/symbolWords/`,
+    //音标短语
+    symbolPhraseList: `${getCurrentUrl()}/front/symbol/symbolPhrase/`,
+    //音标句子
+    symbolSentenceList: `${getCurrentUrl()}/front/symbol/symbolSentence/`,
+    //音乐列表
+    symbolSongList: `${getCurrentUrl()}/front/symbol/symbolSong/`,
+    //显示音乐
+    SongInfo: `${getCurrentUrl()}/front/symbol/songInfo/`
+
+  }
+}
+const backgroundAudioManager = wx.getBackgroundAudioManager();
+
 module.exports = {
   formatTime: formatTime,
+  formatNumber: formatNumber,
   formatSecond: formatSecond,
   getUserInfo: getUserInfo,
   getlogin: getlogin,
   getUsersAll: getUsersAll,
   getCurrentUrl: getCurrentUrl,
   getNewLogin: getNewLogin,
-  getNewInfo: getNewInfo
+  getNewInfo: getNewInfo,
+  URLconfig: URLconfig,
+  backgroundAudioManager: backgroundAudioManager
 }

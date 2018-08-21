@@ -41,6 +41,22 @@ Page({
     }
   },
 
+  gosymbols:function(){
+    if (self.data['nickName'] == '点击头像登录') {
+      wx.showModal({
+        title: '登录提示',
+        content: '亲，点击上方头像授权登录才能使用此功能',
+        showCancel: false,
+        confirmText: "知道了",
+        success: function (res) { }
+      });
+    } else {
+      wx.navigateTo({
+        url: '../symbols/index/index'
+      })
+    }
+  },
+
   giveMoney:function(){
     wx.navigateToMiniProgram({
       appId: 'wx18a2ac992306a5a4',
