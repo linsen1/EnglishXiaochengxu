@@ -1,0 +1,76 @@
+<!--pages/song/info/info.wxml-->
+<view class='container'>
+  <view class="songtitle">
+    <text>{{songName}}</text>
+  </view>
+
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" class='songContent'>
+    <swiper-item>
+      <view class="songImg">
+        <image src='{{songImgBig}}' width="355" mode='widthFix' style="width:75%"></image>
+      </view>
+    </swiper-item>
+    <swiper-item>
+      <scroll-view scroll-y style="height: 380px;">
+        <view class='songEn'>
+          <htmltowxml text="{{ENSong}}" bindWxmlTagATap="wxmlTagATap" />
+        </view>
+      </scroll-view>
+    </swiper-item>
+    <swiper-item>
+      <scroll-view scroll-y style="height: 380px;">
+        <view class='songEn'>
+          <htmltowxml text="{{CNSong}}" bindWxmlTagATap="wxmlTagATap" />
+        </view>
+      </scroll-view>
+    </swiper-item>
+    <swiper-item>
+      <scroll-view scroll-y style="height: 380px;">
+        <view class='aboutcontent'>
+          <view class='songtxt'>
+            <text>歌手简介：</text>
+          </view>
+          <view class='songabout'>
+            {{singerabout}}
+          </view>
+          <view class='songtxt'>
+            <text>歌曲背景：</text>
+          </view>
+          <view class='songabout'>
+            <text>{{songAbout}}</text>
+          </view>
+        </view>
+      </scroll-view>
+    </swiper-item>
+  </swiper>
+
+<view class='timeprogress'>
+<view class='currentTime'><text>{{currentTime}}</text></view>
+<view class='timebg'>
+<view class="progressbg"></view>
+</view>
+<view class='totalTime'>{{durationTime}}</view>
+</view>
+
+
+<view class='toolsSeg'>
+<view class='leftTool'><image src='/images/control/xunhuan.png' style="width:40px" mode='widthFix'></image></view>
+<view class='centerTool' bindtap='playmp3'><image src='{{playimg}}' style="width:35px" mode='widthFix'></image></view>
+<view class='rightTool'></view>
+</view>
+
+
+
+</view>
+
+<view class='BR' style='height:42px'></view>
+<view class='foot'>
+  <view class='footline'></view>
+  <view class='tools'>
+    <view class='share'>
+       <button open-type="share" plain="true" style='border:0px'>
+        <image src='/images/control/fenxiang.png' style='width:32px' mode='widthFix'></image>
+      </button>
+    </view>
+  </view>
+</view>

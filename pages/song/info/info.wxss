@@ -1,0 +1,157 @@
+.container{
+  margin: 0 auto;
+  width: 98%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.songtitle{
+  margin:2px 0;
+  color: #ea4961;
+  font-size: 14pt;
+  display: flex;
+  justify-content:center;
+  align-items:center;
+}
+.songContent{
+  width: 100%;
+  background: white;
+  display:flex;
+  align-items: center;
+  justify-content:center;
+  height: 400px;
+}
+.songsection{
+  height: 400px;
+  width: 98%;
+}
+.songImg{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content:center;
+  margin-top: 8px;
+}
+.songEn{
+  width: 100%;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  margin-top: 2px;
+  color: #888;
+  font-size: 14pt;
+}
+
+.aboutcontent{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+}
+.songtxt{
+  width: 90%;
+  display: flex;
+  justify-content:flex-start;
+  align-items: center;
+  color: #ea4961;
+  font-size: 12pt;
+  margin-top: 4px;
+}
+.songabout{
+  width: 90%;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  color: #888;
+  font-size: 12pt;
+  line-height: 20pt;
+  text-align: justify;
+}
+.timeprogress{
+  width: 100%;
+  margin:4px 0;
+  height: 40px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+}
+.timeprogress .currentTime{
+  flex: 1 1 10%;
+  font-size: 10pt;
+  color: #888;
+}
+.timebg{
+  flex: 1 1 80%;
+  font-size: 10pt;
+  color: #888;
+  display: flex;
+  align-items: center;
+  justify-content:center;
+}
+.timeprogress .totalTime{
+  flex: 1 1 10%;
+  font-size: 10pt;
+  color: #888;
+  display: flex;
+  align-items: center;
+  justify-content:center;
+}
+.progressbg{
+  background: #ea4961;
+  height: 2px;
+  width: 100%;
+}
+
+.toolsSeg{
+  background-color: white;
+  height: 42px;
+  display:flex;
+  align-items: center;
+  width: 100%;
+}
+.toolsSeg .leftTool{
+  flex: 1 1 20%;
+  display: flex;
+  align-items: center;
+  justify-content:center;
+}
+.toolsSeg .centerTool{
+  flex: 1 1 60%;
+  display: flex;
+  align-items: center;
+  justify-content:center;
+}
+
+.toolsSeg .rightTool{
+  flex: 1 1 20%;
+  display: flex;
+  align-items: center;
+  justify-content:center;
+}
+
+
+.foot{
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  position:fixed;
+  bottom:0px;
+}
+.tools{ 
+  width: 100%;
+  display: flex;
+  height: 40px;
+  background-color: white;
+  justify-content: flex-end;
+  align-items: center;
+}
+.tools .share{
+ margin-top:16px;
+
+}
+
+.footline {
+  width: 100%;
+  height: 1px;
+  background-color: #ea4961;
+}

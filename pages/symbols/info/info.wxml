@@ -1,0 +1,227 @@
+<!--pages/symbols/info/info.wxml-->
+<view class='container'>
+
+  <view class='symbolvideo'>
+    <video id="myVideo" class='videoinfo' src="{{speakVideo}}"></video>
+  </view>
+
+
+  <view class='symbolspeak'>
+
+    <view class='symbolspeaktitle'>
+      <text>发音小技巧</text>
+    </view>
+
+    <view class='symbolspeakimg'>
+      <image src="{{speakImgUrl}}" mode='widthFix' style="width:100%" hidden='true'> </image>
+    </view>
+
+    <view class='symbolspeakabout'>
+      <htmltowxml text="{{speakAbout}}" bindWxmlTagATap="wxmlTagATap" />
+    </view>
+
+
+  </view>
+
+
+  <view class='symbolword'>
+    <view class='speakWordtxt'>
+      <text>发音代言人</text>
+    </view>
+    <view class='speakWordinfo'>
+
+      <view class='speakWordimg'>
+        <image src="{{speakWordImg}}" mode='widthFix' style='width:78px'> </image>
+      </view>
+
+      <view class='speakWordtext'>
+
+        <view class='speakWorden'>
+          <text>{{speakWord}}</text>
+        </view>
+        <view class='speakWordsymbol'>
+          <text></text>
+        </view>
+        <view class='speakWordsymobcn'>
+          <text>{{speakWordChinese}}</text>
+        </view>
+
+      </view>
+
+
+      <view class='speakWordmp3'>
+        <audio src="{{speakWordMp3}}" id="audio"></audio>
+        <image src="/images/control/laba1.png" style="width:22px" mode='widthFix' bindtap="audioPlay"></image>
+      </view>
+
+
+    </view>
+
+  </view>
+
+
+  <view class='symbolgroup'>
+
+    <view class='grouptitle'>
+      <text>常见发音字母及组合</text>
+    </view>
+
+    <block wx:for="{{WordGroup}}" wx:key="{{item.id}}">
+      <view class='groupinfo'>
+        <view class='groupwords'>
+          <text>{{item.wordGroup}}</text>
+        </view>
+        <view class='grouptext'>
+          <text>{{item.Words}}</text>
+        </view>
+        <view class='groupimg' data-id="{{item.id}}" bindtap="PlayGroupMp3">
+          <audio src="{{item.WordsMp3}}" id="groupAudio{{item.id}}"></audio>
+          <image src="/images/control/laba1.png" style="width:22px" mode='widthFix'></image>
+        </view>
+      </view>
+      <view class='line'></view>
+    </block>
+
+
+  </view>
+
+
+
+  <view class='symbolwords'>
+    <view class='wordstitle'>
+      <text>单词精读</text>
+    </view>
+    <block wx:for="{{WordsList}}" wx:key="{{item.id}}">
+      <view class='wordsinfo'>
+        <view class='wordseninfo'>
+          <text>{{item.ENword}}</text>
+        </view>
+        <view class='wordsymbolinfo'>
+          <text>{{item.wordSymbol}}</text>
+        </view>
+        <view class='wordsscnfinfo'>
+          <text>{{item.CNword}}</text>
+        </view>
+        <view class='wordsimginfo' data-id="{{item.id}}" bindtap="PlayWordsMp3">
+          <audio src="{{item.ENwordMp3}}" id="Words{{item.id}}"></audio>
+          <image src="/images/control/laba1.png" style="width:22px" mode='widthFix'></image>
+        </view>
+      </view>
+      <view class='line'></view>
+    </block>
+  </view>
+
+
+  <view class='symbolSentence'>
+    <view class='Sentencetitle'>
+      <text>短语速读</text>
+    </view>
+
+    <block wx:for="{{symbolPhraseList}}" wx:key="{{item.id}}">
+
+      <view class='Sentenceinfo'>
+
+        <view class='sentencecontent'>
+
+          <view class='sentencetxt'>
+            <text>{{item.ENPhrase}}</text>
+          </view>
+          <view class='sentencecn'>
+            <text>{{item.CNPhrase}}</text>
+          </view>
+
+        </view>
+
+        <view class='sentenceimg' data-id="{{item.id}}" bindtap="PlayPhraseMp3">
+          <audio src="{{item.PhraseMp3}}" id="Phrase{{item.id}}"></audio>
+          <image src="/images/control/laba1.png" style="width:22px" mode='widthFix'></image>
+        </view>
+
+      </view>
+
+      <view class='line'></view>
+    </block>
+
+  </view>
+
+
+
+  <view class='symbolSentence'>
+    <view class='Sentencetitle'>
+      <text>句子快读</text>
+    </view>
+
+    <block wx:for="{{symbolSentenceList}}" wx:key="{{item.id}}">
+      <view class='Sentenceinfo'>
+
+        <view class='sentencecontent'>
+
+          <view class='sentencetxt'>
+            <text>{{item.ENSentence}}</text>
+          </view>
+          <view class='sentencecn'>
+            <text>{{item.CNSentence}}</text>
+          </view>
+
+        </view>
+
+        <view class='sentenceimg' data-id="{{item.id}}" bindtap="PlaySentenceMp3">
+          <audio src="{{item.SentenceMp3}}" id="Sentence{{item.id}}"></audio>
+          <image src="/images/control/laba1.png" style="width:22px" mode='widthFix'></image>
+        </view>
+
+      </view>
+
+      <view class='line'></view>
+    </block>
+  </view>
+
+
+  <view class='symbolSongInfo'>
+    <view class='songNav'>
+      <text>歌曲欣赏</text>
+    </view>
+
+    <block wx:for="{{symbolSongList}}" wx:key="{{item.id}}">
+
+      <view class='songContent' data-id="{{item.id}}" bindtap='goSongInfo'>
+        <view class='songimg'>
+          <image src="{{item.songImgSmall}}" mode='widthFix' style='width:76px'> </image>
+        </view>
+
+        <view class='songBaseInfo'>
+          <view class='songTitle'>
+            <text>{{item.songName}}</text>
+          </view>
+          <view class='songAuthor'>
+            <text>{{item.singer}}</text>
+          </view>
+
+        </view>
+        <view class='songInfo'>
+          <image src='/images/control/jiantou.png' style="width:24px" mode='widthFix'></image>
+        </view>
+
+      </view>
+
+      <view class='line'></view>
+    </block>
+
+
+  </view>
+
+
+</view>
+
+
+<view class='BR' style='height:42px'></view>
+<view class='foot'>
+  <view class='footline'></view>
+  <view class='tools'>
+    <view class='share'>
+       <button open-type="share" plain="true" style='border:0px'>
+        <image src='/images/control/fenxiang.png' style='width:32px' mode='widthFix'></image>
+      </button>
+    </view>
+  </view>
+</view>

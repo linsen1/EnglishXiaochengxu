@@ -1,0 +1,351 @@
+/* pages/symbols/info/info.wxss */
+
+.container {
+  margin: 0 auto;
+  width: 98%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.symbolvideo {
+  display: flex;
+  background-color: white;
+  width: 100%;
+  height: 225px;
+  align-items: center;
+  justify-content: center;
+}
+
+.symbolvideo .videoinfo {
+  flex: 1 1 100%;
+}
+
+.symbolspeak {
+  display: flex;
+  flex-flow: column;
+  background: white;
+  width: 100%;
+  margin-top: 6px;
+}
+
+.symbolspeak .symbolspeaktitle {
+  flex: 1 1 100%;
+  color: #ea4961;
+  font-size: 12pt;
+  background-color: #f6f6f6;
+  padding-bottom: 6px;
+}
+
+.symbolspeak .symbolspeakimg {
+  flex: 1 1 100%;
+  margin: 2px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.symbolspeak .symbolspeakabout {
+  flex: 1 1 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  font-size: 14pt;
+  margin: 2px 0;
+}
+
+.symbolword {
+  display: flex;
+  flex-flow: column;
+  background: white;
+  width: 100%;
+  margin-top: 6px;
+  align-items: center;
+}
+
+.symbolword .speakWordtxt {
+  width: 100%;
+  color: #ea4961;
+  font-size: 12pt;
+  background-color: #f6f6f6;
+  padding-bottom: 6px;
+}
+
+.speakWordinfo {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  height: 80px;
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+.speakWordinfo .speakWordimg {
+  flex: 1 1 20%;
+  display: flex;
+  justify-content:flex-start;
+  align-items: center;
+}
+
+.speakWordinfo .speakWordtext {
+  flex: 1 1 70%;
+  display: flex;
+  flex-flow: column;
+}
+
+.speakWorden {
+  font-size: 14pt;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.speakWordsymbol {
+  font-size: 14pt;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #888;
+}
+
+.speakWordsymobcn {
+  font-size: 10pt;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+}
+
+.speakWordinfo .speakWordmp3 {
+  flex: 1 1 10%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.symbolgroup {
+  display: flex;
+  background-color: white;
+  width: 100%;
+  align-items: center;
+  margin-top: 6px;
+  flex-flow: column;
+}
+
+.symbolgroup .grouptitle {
+  width: 100%;
+  color: #ea4961;
+  font-size: 12pt;
+  background-color: #f6f6f6;
+  padding-bottom: 6px;
+}
+
+.symbolgroup .groupinfo {
+  width: 100%;
+  background-color: white;
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.groupinfo .groupwords {
+  flex: 1 1 20%;
+  font-size: 14pt;
+  padding-left: 2px;
+}
+
+.groupinfo .grouptext {
+  flex: 1 1 70%;
+  font-size: 14pt;
+  color: #888;
+}
+
+.groupinfo .groupimg {
+  flex: 1 1 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.line {
+  width: 100%;
+  height: 2px;
+  background-color: #f6f6f6;
+}
+
+.symbolwords {
+  display: flex;
+  background-color: white;
+  width: 100%;
+  align-items: center;
+  margin-top: 6px;
+  flex-flow: column;
+}
+
+.symbolwords .wordstitle {
+  width: 100%;
+  color: #ea4961;
+  font-size: 12pt;
+  background-color: #f6f6f6;
+  padding-bottom: 6px;
+}
+
+.symbolwords .wordsinfo {
+  width: 100%;
+  background-color: white;
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.wordsinfo .wordseninfo {
+  flex: 1 1 30%;
+  font-size: 14pt;
+  padding-left: 2px;
+}
+
+.wordsinfo .wordsymbolinfo {
+  flex: 1 1 20%;
+  font-size: 14pt;
+  color: #888;
+}
+
+.wordsinfo .wordsscnfinfo {
+  flex: 1 1 40%;
+  font-size: 12pt;
+  color: #888;
+}
+
+.wordsinfo .wordsimginfo {
+  flex: 1 1 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.symbolSentence{
+  display: flex;
+  background-color: white;
+  width: 100%;
+  align-items: center;
+  margin-top: 6px;
+  flex-flow: column;
+}
+.symbolSentence .Sentencetitle{
+  width: 100%;
+  color: #ea4961;
+  font-size: 12pt;
+  background-color: #f6f6f6;
+  padding-bottom: 6px;
+}
+.symbolSentence .Sentenceinfo{
+  width: 100%;
+  height: 60px;
+  display: flex;
+}
+.Sentenceinfo .sentencecontent{
+  flex: 1 1 90%;
+  display:flex;
+  flex-flow: column; 
+  justify-content: center;
+  padding-left: 2px;
+}
+.sentencecontent .sentencetxt{
+  font-size: 14pt;
+}
+.sentencecontent .sentencecn{
+  font-size: 12pt;
+  color: #888;
+}
+
+.Sentenceinfo .sentenceimg{
+  flex: 1 1 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.symbolSongInfo{
+  display: flex;
+  background-color: white;
+  width: 100%;
+  align-items: center;
+  margin-top: 6px;
+  flex-flow: column;
+}
+.symbolSongInfo .songNav{
+  width: 100%;
+  color: #ea4961;
+  font-size: 12pt;
+  background-color: #f6f6f6;
+  padding-bottom: 6px;
+}
+.symbolSongInfo .songContent{
+  width: 100%;
+  height: 80px;
+  display: flex;
+}
+.songContent .songimg{
+  flex:1 1 25%;
+  display: flex;
+  align-items: center;
+  justify-content:flex-start;
+}
+.songBaseInfo{
+  flex: 1 1 65%;
+  display: flex;
+  justify-content:center;
+  flex-flow: column;
+}
+.songBaseInfo .songTitle{
+  width: 100%;
+  font-size: 14pt;
+  display: flex;
+  align-items: center;
+  justify-content:flex-start;
+}
+.songBaseInfo .songAuthor{
+  width: 100%;
+  font-size: 12pt;
+  color: #888;
+  display: flex;
+  align-items: center;
+  justify-content:flex-start;
+}
+.songInfo{
+  flex: 1 1 10%;
+  display: flex;
+  align-items: center;
+  justify-content:flex-start;
+}
+
+.foot{
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  position:fixed;
+  bottom:0px;
+}
+.tools{ 
+  width: 100%;
+  display: flex;
+  height: 40px;
+  background-color: white;
+  justify-content: flex-end;
+  align-items: center;
+}
+.tools .share{
+ margin-top:16px;
+
+}
+
+.footline {
+  width: 100%;
+  height: 1px;
+  background-color: #ea4961;
+}

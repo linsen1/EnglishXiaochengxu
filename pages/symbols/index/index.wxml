@@ -1,0 +1,25 @@
+<!--pages/symbols/index/index.wxml-->
+<view class='container'>
+
+
+<view wx:for="{{infos}}" wx:key="{{item.id}}">
+
+  <view class='basename' wx:if="{{item.typeflag==1}}">
+    <text>{{item.title}}</text>
+  </view>
+
+<navigator url="../info/info?id={{item.id}}&title={{item.title}}">
+  <view class='nav'  wx:if="{{item.typeflag==0}}">
+
+    <view class='title'>{{item.title}}</view>
+    <view class='icon'>
+      <image src='/images/control/jiantou.png' style="width:24px" mode='widthFix'></image>
+    </view>
+  
+  </view>
+</navigator>
+
+</view>
+
+
+</view>
