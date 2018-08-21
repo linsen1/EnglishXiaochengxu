@@ -7,7 +7,7 @@
   <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" class='songContent'>
     <swiper-item>
       <view class="songImg">
-        <image src='{{songImgBig}}' width="355" mode='widthFix' style="width:75%"></image>
+        <image src='{{songImgBig}}' mode='widthFix' style='width:540rpx' background-size="cover"></image>
       </view>
     </swiper-item>
     <swiper-item>
@@ -47,14 +47,14 @@
 <view class='timeprogress'>
 <view class='currentTime'><text>{{currentTime}}</text></view>
 <view class='timebg'>
-<view class="progressbg"></view>
+<view class="progressbg" style='width:{{progress}}%'></view>
 </view>
 <view class='totalTime'>{{durationTime}}</view>
 </view>
 
 
 <view class='toolsSeg'>
-<view class='leftTool'><image src='/images/control/xunhuan.png' style="width:40px" mode='widthFix'></image></view>
+<view class='leftTool' bindtap='playsingers'><image src='{{xunhuan}}' style="width:30px" mode='widthFix'></image></view>
 <view class='centerTool' bindtap='playmp3'><image src='{{playimg}}' style="width:35px" mode='widthFix'></image></view>
 <view class='rightTool'></view>
 </view>

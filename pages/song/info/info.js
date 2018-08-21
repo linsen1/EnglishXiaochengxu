@@ -17,9 +17,11 @@ Page({
     songAbout: '',
     audio: '',
     singer: '',
-    currentTime:'00:00',
-    durationTime:'00:00',
+    currentTime: '00:00',
+    durationTime: '00:00',
     playimg: '/images/control/plays.png',
+    xunhuan: '/images/control/xunhuan0.png',
+    progress: 0,
     indicatorDots: true,
     autoplay: false,
     interval: 5000,
@@ -32,7 +34,8 @@ Page({
   onLoad: function(options) {
     self = this;
     getSongInfo(options.id);
-    util.backgroundAudioManager.paused = true;
+    getAudioStaus();
+    pauseGoBack();
   },
 
   /**
@@ -41,36 +44,43 @@ Page({
   onReady: function() {
 
   },
-
+  playsingers: function() {
+    if (self.data.xunhuan == '/images/control/xunhuan0.png') {
+      self.setData({
+        xunhuan: '/images/control/xunhuan1.png'
+      });
+    } else {
+      self.setData({
+        xunhuan: '/images/control/xunhuan0.png'
+      });
+    }
+  },
   playmp3: function() {
     if (self.data.playimg == '/images/control/plays.png') {
-     
+
       self.setData({
         playimg: '/images/control/stops.png'
       });
-      if (backgroundAudioManager.src==''){
+      if (backgroundAudioManager.src == '') {
         backgroundAudioManager.src = self.data.audio
-       
-      } else if (backgroundAudioManager.src == self.data.audio){
+
+      } else if (backgroundAudioManager.src == self.data.audio) {
         backgroundAudioManager.play();
-        
-      }else{
+        self.setData({
+          playimg: '/images/control/stops.png'
+        });
+      } else {
         backgroundAudioManager.src = self.data.audio
+        self.setData({
+          playimg: '/images/control/stops.png'
+        });
       }
-      console.log(obj.currentTime);
-      console.log(obj.duration);
-    } else{
+    } else {
       backgroundAudioManager.pause();
       self.setData({
         playimg: '/images/control/plays.png'
       });
     }
-    obj.onPlay(()=>{
-      self.setData({
-        currentTime: util.formatNumber(obj.currentTime),
-        durationTime: obj.duration,
-      });
-    });
   },
 
   /**
@@ -135,7 +145,7 @@ function getSongInfo(id) {
       backgroundAudioManager.epname = self.data.songName;
       backgroundAudioManager.singer = self.data.singer;
       backgroundAudioManager.coverImgUrl = self.data.songImgBig;
-      
+
       wx.getNetworkType({
         success: function(res1) {
           // 返回网络类型, 有效值：
@@ -144,21 +154,60 @@ function getSongInfo(id) {
           if (networkType == 'wifi') {
             self.setData({
               audio: res.data.songMp3HD
-             
             });
-          
+
           } else {
             self.setData({
               audio: res.data.songMp3
             });
-           
+
           }
         }
       })
-      
+
       wx.setNavigationBarTitle({
         title: res.data.songName
       });
     }
   })
+}
+
+function getAudioStaus() {
+  obj.onTimeUpdate(() => {
+    var progress = parseInt((obj.currentTime / obj.duration) * 100)
+    self.setData({
+      currentTime: util.formatSecond(obj.currentTime.toString().split('.')[0]),
+      durationTime: util.formatSecond(obj.duration.toString().split('.')[0]),
+      progress: progress,
+      playimg: '/images/control/stops.png',
+    });
+  });
+  obj.onEnded(() => {
+    self.setData({
+      progress: 0,
+      currentTime: '00:00',
+      playimg: '/images/control/plays.png'
+    });
+    if (self.data.xunhuan == '/images/control/xunhuan1.png') {
+      obj.src = self.data.audio;
+    }
+  });
+  obj.onPlay(() => {
+    self.setData({
+      playimg: '/images/control/stops.png'
+    });
+  });
+}
+
+function pauseGoBack() {
+  if (obj.currentTime > 0) {
+    var progress = parseInt((obj.currentTime / obj.duration) * 100)
+    self.setData({
+      currentTime: util.formatSecond(obj.currentTime.toString().split('.')[0]),
+      durationTime: util.formatSecond(obj.duration.toString().split('.')[0]),
+      playimg: '/images/control/plays.png',
+      progress: progress
+
+    })
+  }
 }

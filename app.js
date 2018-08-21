@@ -2,7 +2,7 @@
 const util = require('/utils/util.js');
 
 App({
-  onLaunch: function () {
-    util.getNewLogin();
-  }
+    onLaunch: function () {
+        util.getNewLogin();
+    }
 })
