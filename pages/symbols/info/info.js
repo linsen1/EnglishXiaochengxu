@@ -20,7 +20,8 @@ Page({
     symbolPhraseList:'',
     symbolSentenceList:'',
     symbolBasetitle:'',
-    symbolSongList:''
+    symbolSongList:'',
+    title:''
   },
 
   /**
@@ -61,7 +62,7 @@ Page({
   },
   goSongInfo:function(e){
     wx.navigateTo({
-      url: '../../song/info/info?id=' + e.currentTarget.dataset.id
+      url: '../../song/infos/infos?id=' + e.currentTarget.dataset.id
     })
   },
   /**
@@ -106,8 +107,22 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-  
+  onShareAppMessage: function (res) {
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(res.target)
+    }
+    return {
+      title: '音标小课堂:' + self.data.symbolBasetitle,
+      success: function (res) {
+
+        // 转发成功
+      },
+      fail: function (res) {
+        console.log('失败');
+        // 转发失败
+      }
+    }
   }
 })
 

@@ -1,4 +1,4 @@
-// pages/song/info/info.js
+// pages/song/infos/infos.js
 const util = require('../../../utils/util.js');
 var self;
 const backgroundAudioManager = util.backgroundAudioManager;
@@ -19,8 +19,8 @@ Page({
     singer: '',
     currentTime: '00:00',
     durationTime: '00:00',
-    playimg: '/images/control/plays0.png',
-    xunhuan: '/images/control/xunhuan0.png',
+    playimg: '/images/control/plays1.png',
+    xunhuan: '/images/control/xh2.png',
     progress: 0,
     indicatorDots: true,
     autoplay: false,
@@ -31,7 +31,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     self = this;
     getSongInfo(options.id);
     getAudioStaus();
@@ -41,105 +41,112 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
-  },
-  playsingers: function () {
-    if (self.data.xunhuan == '/images/control/xunhuan0.png') {
-      self.setData({
-        xunhuan: '/images/control/xunhuan1.png'
-      });
-    } else {
-      self.setData({
-        xunhuan: '/images/control/xunhuan0.png'
-      });
-    }
-  },
-  playmp3: function () {
-    if (self.data.playimg == '/images/control/plays.png') {
-
-      self.setData({
-        playimg: '/images/control/stops.png'
-      });
-      if (backgroundAudioManager.src == '') {
-        backgroundAudioManager.src = self.data.audio
-
-      } else if (backgroundAudioManager.src == self.data.audio) {
-        backgroundAudioManager.play();
-        self.setData({
-          playimg: '/images/control/stops.png'
-        });
-      } else {
-        backgroundAudioManager.src = self.data.audio
-        self.setData({
-          playimg: '/images/control/stops.png'
-        });
-      }
-    } else {
-      backgroundAudioManager.pause();
-      self.setData({
-        playimg: '/images/control/plays.png'
-      });
-    }
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
+  },
+
+  playsingers: function() {
+    if (self.data.xunhuan == '/images/control/xh2.png') {
+      self.setData({
+        xunhuan: '/images/control/xh1.png'
+      });
+    } else {
+      self.setData({
+        xunhuan: '/images/control/xh2.png'
+      });
+    }
+  },
+  playmp3: function() {
+    if (self.data.playimg == '/images/control/plays1.png') {
+
+      self.setData({
+        playimg: '/images/control/stop1.png'
+      });
+      if (backgroundAudioManager.src == '') {
+        backgroundAudioManager.src = self.data.audio
+        backgroundAudioManager.title = self.data.songName;
+        backgroundAudioManager.epname = self.data.songName;
+        backgroundAudioManager.singer = self.data.singer;
+        backgroundAudioManager.coverImgUrl = self.data.songImgBig;
+        
+      } else if (backgroundAudioManager.src == self.data.audio) {
+        backgroundAudioManager.play();
+        self.setData({
+          playimg: '/images/control/stop1.png'
+        });
+      } else {
+        backgroundAudioManager.src = self.data.audio
+        backgroundAudioManager.title = self.data.songName;
+        backgroundAudioManager.epname = self.data.songName;
+        backgroundAudioManager.singer = self.data.singer;
+        backgroundAudioManager.coverImgUrl = self.data.songImgBig;
+        self.setData({
+          playimg: '/images/control/stop1.png'
+        });
+      }
+    } else {
+      backgroundAudioManager.pause();
+      self.setData({
+        playimg: '/images/control/plays1.png'
+      });
+    }
+    
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
+  onShareAppMessage: function(res) {
     if (res.from === 'button') {
       // 来自页面内转发按钮
       console.log(res.target)
     }
     return {
-      title:'英文歌曲:'+self.data.songName,
-      success: function (res) {
+      title: '英文歌曲:' + self.data.songName,
+      success: function(res) {
 
         // 转发成功
       },
-      fail: function (res) {
+      fail: function(res) {
         console.log('失败');
         // 转发失败
       }
     }
-
   }
 })
 
@@ -157,10 +164,7 @@ function getSongInfo(id) {
         songAbout: res.data.songAbout,
         singer: res.data.singer
       });
-      backgroundAudioManager.title = self.data.songName;
-      backgroundAudioManager.epname = self.data.songName;
-      backgroundAudioManager.singer = self.data.singer;
-      backgroundAudioManager.coverImgUrl = self.data.songImgBig;
+     
 
       wx.getNetworkType({
         success: function (res1) {
@@ -196,7 +200,7 @@ function getAudioStaus() {
         currentTime: util.formatSecond(obj.currentTime.toString().split('.')[0]),
         durationTime: util.formatSecond(obj.duration.toString().split('.')[0]),
         progress: progress,
-        playimg: '/images/control/stops.png',
+        playimg: '/images/control/stop1.png',
       });
     }
   });
@@ -204,15 +208,17 @@ function getAudioStaus() {
     self.setData({
       progress: 0,
       currentTime: '00:00',
-      playimg: '/images/control/plays.png'
+      playimg: '/images/control/plays1.png'
     });
-    if (self.data.xunhuan == '/images/control/xunhuan1.png') {
+    if (self.data.xunhuan == '/images/control/xh1.png') {
       obj.src = self.data.audio;
+    }else{
+      wx.stopBackgroundAudio();
     }
   });
   obj.onPlay(() => {
     self.setData({
-      playimg: '/images/control/stops.png'
+      playimg: '/images/control/stop1.png'
     });
   });
 }
@@ -222,10 +228,9 @@ function pauseGoBack() {
     var progress = parseInt((obj.currentTime / obj.duration) * 100)
     self.setData({
       currentTime: util.formatSecond(obj.currentTime.toString().split('.')[0]),
-      durationTime: util.formatSecond(obj.duration.toString().split('.')[0]),
-      playimg: '/images/control/plays.png',
+      durationTime: util.formatSecond((obj.duration == undefined? 0 : obj.duration).toString().split('.')[0]),
+      playimg: '/images/control/plays1.png',
       progress: progress
-
     })
   }
 }

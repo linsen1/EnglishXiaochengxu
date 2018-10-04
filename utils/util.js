@@ -136,7 +136,7 @@ const getUsersAll = function (callback) {
 const getCurrentUrl = function () {
   var testURL = 'https://endemo.guzhenshuo.cc';
   var Url = 'https://www.guzhenshuo.cc';
-  return testURL;
+  return Url;
 }
 
 const getNewLogin = function () {
@@ -235,7 +235,15 @@ const URLconfig={
     //音乐列表
     symbolSongList: `${getCurrentUrl()}/front/symbol/symbolSong/`,
     //显示音乐
-    SongInfo: `${getCurrentUrl()}/front/symbol/songInfo/`
+    SongInfo: `${getCurrentUrl()}/front/symbol/songInfo/`,
+    //所有音乐列表
+    songList: `${getCurrentUrl()}/front/song/list`,
+    //首页信息列表
+    homeinfos: `${getCurrentUrl()}/front/home/infos`,
+    //首页Banner广告
+    homebanner: `${getCurrentUrl()}/front/home/banners`,
+    //站点公告
+    siteNewsInfo: `${getCurrentUrl()}/front/siteNews/showNews/`
 
   }
 }

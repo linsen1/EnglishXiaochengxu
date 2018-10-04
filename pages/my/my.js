@@ -7,7 +7,8 @@ Page({
     avatarUrl: '/images/control/user.png',
     nickName: '点击头像登录',
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    showFilm:true
   },
 
   gomymotto: function () {
@@ -40,7 +41,21 @@ Page({
       })
     }
   },
-
+  gomusic:function () {
+    if (self.data['nickName'] == '点击头像登录') {
+      wx.showModal({
+        title: '登录提示',
+        content: '亲，点击上方头像授权登录才能使用此功能',
+        showCancel: false,
+        confirmText: "知道了",
+        success: function (res) { }
+      });
+    } else {
+      wx.switchTab({
+        url: '../song/index/index'
+      })
+    }
+  },
   gosymbols:function(){
     if (self.data['nickName'] == '点击头像登录') {
       wx.showModal({
@@ -71,6 +86,7 @@ Page({
   //从本地和服务端判断用户是否是新用户
   onLoad: function () {
     self = this;
+    getinfos();
     //先从本地缓存判断
     if (wx.getStorageSync('userInfo')) {
       self.setData({
@@ -79,6 +95,7 @@ Page({
         hasUserInfo: true
       })
       util.getNewLogin();
+      
     }
     //从服务器加载判断
     else if (wx.getStorageSync('openid')){
@@ -136,3 +153,18 @@ Page({
     }
   }
 })
+
+function getinfos() {
+
+  wx.request({
+    url: util.URLconfig.service.homeinfos,
+    success: function (res) {
+      self.setData({
+        showFilm: res.data.showFilm
+      });
+    },
+    complete: function () {
+
+    }
+  })
+}

@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/home/index",
     "pages/index/index",
     "pages/logs/logs",
     "pages/his/his",
@@ -16,7 +17,11 @@
     "pages/find/find",
     "pages/symbols/index/index",
     "pages/symbols/info/info",
-    "pages/song/info/info"
+    "pages/song/info/info",
+    "pages/song/infos/infos",
+    "pages/song/index/index",
+    "pages/sitenews/index/index",
+    "pages/sitenews/info/info"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -30,14 +35,14 @@
     "selectedColor": "#EA4961",
     "list": [
       {
-        "iconPath": "images/nav/jinri0.png",
-        "selectedIconPath": "images/nav/jinri.png",
-        "pagePath": "pages/index/index",
-        "text": "今日"
+        "iconPath": "images/nav/home0.png",
+        "selectedIconPath": "images/nav/home.png",
+        "pagePath": "pages/home/index",
+        "text": "首页"
       },
       {
-        "iconPath": "images/nav/lishi0.png",
-        "selectedIconPath": "images/nav/lishi.png",
+        "iconPath": "images/nav/sentence0.png",
+        "selectedIconPath": "images/nav/sentence.png",
         "pagePath": "pages/his/his",
         "text": "名句"
       },
@@ -47,6 +52,14 @@
         "pagePath": "pages/article/article",
         "text": "美文"
       },
+
+      {
+        "iconPath": "images/nav/music0.png",
+        "selectedIconPath": "images/nav/music.png",
+        "pagePath": "pages/song/index/index",
+        "text": "歌曲"
+      },
+     
       {
         "iconPath": "images/nav/my0.png",
         "selectedIconPath": "images/nav/my.png",

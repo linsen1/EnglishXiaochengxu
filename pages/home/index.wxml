@@ -1,0 +1,202 @@
+<!--pages/home/index.wxml-->
+<view class='container'>
+
+
+  <swiper autoplay="true" duration="500" interval="5000" class='bannerinfo'>
+
+    <block wx:for="{{banners}}" wx:key="{{item.id}}">
+      <swiper-item>
+        <view class='bannerImg' data-id="{{item.type}}_{{item.ref_id}}" bindtap='bannerClick'>
+          <image src='{{item.imgurl}}' mode='aspectFill' class='bannerImg'></image>
+        </view>
+        <view class='bannerTxt'>
+          <text class='bannerTxtinfo'>{{item.title}}</text>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+
+
+  <view class='navTitle'>
+    <view class='navTitleInfo'>
+      <text>名句</text>
+    </view>
+    <navigator url="../his/his" open-type='switchTab'>
+      <view>
+        <image src='/images/nav/arrow.png' mode='widthFix' class='navMore'></image>
+      </view>
+    </navigator>
+  </view>
+
+
+  <view class='sentence'>
+
+    <block wx:for="{{mottos}}" wx:key="{{item.id}}">
+
+      <view class='sentenceImgInfo'>
+        <view class='sentenceImgContent'>
+          <navigator url="../info/info?id={{item.id}}">
+            <image src='{{item.pic}}' mode='widthFix' class='sentenceImgContent'></image>
+          </navigator>
+          <view class='sentenceImgTxt'>
+            <navigator url="../info/info?id={{item.id}}">
+              <text>{{item.englishWord}}</text>
+            </navigator>
+          </view>
+          <view class='sentenceImgDate'>
+            <text>{{item.created_at}}</text>
+          </view>
+        </view>
+      </view>
+
+    </block>
+
+  </view>
+
+   <view style='margin-top:12px;'></view>
+  <ad unit-id="adunit-b7d21b2d27059b5a"></ad>
+
+  <view class='navTitle'>
+    <view class='navTitleInfo'>
+      <text>美文</text>
+    </view>
+    <view>
+      <navigator url="../article/article" open-type='switchTab'>
+        <image src='/images/nav/arrow.png' mode='widthFix' class='navMore'></image>
+      </navigator>
+    </view>
+  </view>
+
+  <block wx:for="{{articles}}" wx:key="{{item.id}}">
+
+    <view class='articleInfo1' wx:if="{{index==0}}">
+      <view class='articleInfo1Img' data-id="{{item.id}}" bindtap='articleClick'>
+        <image src='{{item.picUrl}}' mode='widthFix' class='sentenceImgContent'></image>
+      </view>
+
+      <view class='articleInfo1Txt' data-id="{{item.id}}"  bindtap='articletxtClick'>
+        <text>{{item.title}}</text>
+      </view>
+      <view class='articleInfo1Date'>
+        <text>{{item.created_at}}</text>
+      </view>
+    </view>
+  </block>
+  <view class='sentence' style='height:170px;'>
+    <block wx:for="{{articles}}" wx:key="{{item.id}}">
+      <view class='sentenceImgInfo' wx:if="{{index>0}}">
+        <view class='sentenceImgContent'>
+          <navigator url="../articleinfo/articleinfo?id={{item.id}}">
+            <image src='{{item.picUrl}}' mode='widthFix' class='sentenceImgContent'></image>
+          </navigator>
+          <view class='sentenceArticleTxt'>
+            <navigator url="../articleinfo/articleinfo?id={{item.id}}">
+              <text>{{item.title}}</text>
+            </navigator>
+          </view>
+
+          <view class='sentenceImgDate'>
+            <text>{{item.created_at}}</text>
+          </view>
+
+        </view>
+      </view>
+    </block>
+
+  </view>
+
+
+
+<view hidden='{{showFilm}}'>
+  <view class='navTitle'>
+    <view class='navTitleInfo'>
+      <text>歌曲</text>
+    </view>
+    <view>
+      <navigator url="../song/index/index" open-type='switchTab'>
+        <image src='/images/nav/arrow.png' mode='widthFix' class='navMore'></image>
+      </navigator>
+    </view>
+  </view>
+
+  <view class='sentence' style='height:185px'>
+
+    <block wx:for="{{songs}}" wx:key="{{item.id}}">
+      <view class='sentenceSongImgInfo'>
+        <view class='sentenceImgContent'>
+          <navigator url="../song/infos/infos?id={{item.id}}">
+            <image src='{{item.songImgSmall}}' mode='widthFix' class='sentenceImgContent'></image>
+          </navigator>
+          <view class='sentenceArticleTxt'>
+            <navigator url="../song/infos/infos?id={{item.id}}">
+              <text>{{item.songName}}</text>
+            </navigator>
+          </view>
+          <view class='sentenceImgDate'>
+            <navigator url="../song/infos/infos?id={{item.id}}">
+              <text>{{item.singer}}</text>
+            </navigator>
+          </view>
+        </view>
+      </view>
+    </block>
+
+  </view>
+</view>
+
+
+
+
+<view hidden='{{showFilm}}'>
+  <view class='navTitle'>
+    <view class='navTitleInfo'>
+      <text>跟着大片学英文</text>
+    </view>
+    <view>
+      <navigator url="../film/film">
+        <image src='/images/nav/arrow.png' mode='widthFix' class='navMore'></image>
+      </navigator>
+    </view>
+  </view>
+  <block wx:for="{{films}}" wx:key="{{item.id}}">
+    <view class='articleInfo1' wx:if="{{index==0}}">
+      <view class='articleInfo1Img'>
+        <image src='{{item.video_poster}}' mode='widthFix' class='sentenceImgContent' data-id="{{item.id}}" bindtap='filmClick'></image>
+      </view>
+      <view class='articleInfo1Txt' data-id="{{item.id}}" bindtap='filmtxtClick'>
+
+        <text>{{item.video_title}}</text>
+
+      </view>
+      <view class='articleInfo1Date'>
+
+        <text>{{item.created_at}}</text>
+
+      </view>
+    </view>
+  </block>
+  <view class='sentence' style='height:170px;'>
+
+    <block wx:for="{{films}}" wx:key="{{item.id}}">
+      <view class='sentenceImgInfo' wx:if="{{index>0}}">
+        <view class='sentenceImgContent'>
+          <navigator url="../filminfo/filminfo?id={{item.id}}">
+            <image src='{{item.video_poster}}' mode='widthFix' class='sentenceImgContent'></image>
+          </navigator>
+          <view class='sentenceArticleTxt'>
+            <navigator url="../filminfo/filminfo?id={{item.id}}">
+              <text>{{item.video_title}}</text>
+            </navigator>
+          </view>
+          <view class='sentenceImgDate'>
+            <text>{{item.created_at}}</text>
+          </view>
+        </view>
+      </view>
+    </block>
+
+  </view>
+</view>
+ 
+
+</view>

@@ -31,3 +31,12 @@
   align-items:center;
   display:flex;
 }
+.tip{
+  margin-top: 10px;
+  font-size: 10pt;
+  color: #888;
+  justify-content:flex-start;
+  align-items:center;
+  display:flex;
+  padding-left: 2px;
+}

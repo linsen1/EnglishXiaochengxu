@@ -17,7 +17,7 @@
     </view>
 
     <view class='symbolspeakabout'>
-      <htmltowxml text="{{speakAbout}}" bindWxmlTagATap="wxmlTagATap" />
+      <htmltowxml text="{{speakAbout}}" bindWxmlTagATap="wxmlTagATap" class="infos"/>
     </view>
 
 
@@ -220,7 +220,7 @@
   <view class='tools'>
     <view class='share'>
        <button open-type="share" plain="true" style='border:0px'>
-        <image src='/images/control/fenxiang.png' style='width:32px' mode='widthFix'></image>
+        <image src='/images/control/fenxiang.png' style='width:35px' mode='widthFix'></image>
       </button>
     </view>
   </view>

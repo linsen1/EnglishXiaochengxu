@@ -1,0 +1,198 @@
+/* pages/home/index.wxss */
+
+.container {
+  margin: 0 auto;
+  width: 98%;
+  display: flex;
+  flex-direction: column;
+}
+
+/*
+广告Banner区域
+*/
+
+.bannerinfo {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 230px;
+  background-color: white;
+  position: relative;
+}
+
+.bannerImg {
+  width: 100%;
+  height: 100%;
+}
+
+.bannerTxt {
+  width: 97.2%;
+  height: 35px;
+  background-color: rgba(96, 96, 96, 0.3);
+  position: absolute;
+  bottom: 0px;
+  color: white;
+  font-size: 12pt;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 10px;
+}
+
+.bannerTxtinfo {
+  width: 96%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.navTitle {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 30px;
+}
+
+.navTitleInfo {
+  font-size: 14pt;
+  color: #ea4961;
+  font-weight: bold;
+}
+
+.navMore {
+  right: 6px;
+  position: absolute;
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -10px;
+}
+
+/*
+名句区域
+*/
+
+.sentence {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content:space-between;
+  flex-direction: row;
+  height: 170px;
+}
+
+.sentenceImgInfo {
+  width: 49.5%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  
+}
+
+.sentenceSongImgInfo {
+  width: 32.67%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.sentenceImgContent {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  width: 100%;
+  overflow: hidden;
+ height: 190px;
+}
+
+.sentenceImgTxt {
+  width: 96%;
+  height: 24px;
+  display: -webkit-box;
+  font-size: 12pt;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  justify-content: center;
+}
+.sentenceArticleTxt {
+  width: 96%;
+  height: 24px;
+  display: -webkit-box;
+  font-size: 12pt;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  justify-content: center;
+  margin-top: 4px;
+  
+}
+.sentenceImgDate {
+  display: flex;
+  color: #888;
+  font-size: 10pt;
+  align-items: flex-start;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.sentenceWrap {
+  width: 1%;
+}
+
+
+.articleInfo1{
+ display: flex;
+ align-items: center;
+ flex-flow: column;
+ height: 210px;
+ width: 100%;
+ margin-bottom:6px; 
+}
+.articleInfo1Img{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  overflow: hidden;
+  height: 180px;
+}
+.articleInfo1Txt{
+  width: 98%;
+  font-size: 12pt;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  height:25px; 
+  margin-top: 4px;
+  text-align: left;
+
+}
+.articleInfo1Content{
+  
+  width: 98%;
+  color:#888;
+  font-size: 12pt;
+  align-items: flex-start;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  height: 20px;
+}
+
+.articleInfo1Date{
+   width: 98%;
+  color:#888;
+  font-size: 10pt;
+   display: flex;
+   align-items: flex-start;
+   justify-items:center;
+   height: 22px;
+   margin-bottom: 4px;
+}

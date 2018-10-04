@@ -1,0 +1,218 @@
+/* pages/song/infos/infos.wxss */
+
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  min-width: 1000px;
+  z-index: -10;
+  zoom: 1;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: blur(200rpx);
+  display: flex;
+  flex-flow: column;
+}
+
+.container1 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.songTitle {
+  display: flex;
+  height: 40px;
+  color: #ea4961;
+  align-items: center;
+  font-weight: bold;
+  justify-content: center;
+  margin-top: 4px;
+  font-size: 14pt;
+}
+
+.songSinger {
+  display: flex;
+  font-size: 12pt;
+  color: #ea4961;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.songContent{
+  margin-top: 2px;
+  width: 100%;
+  display:flex;
+  align-items: center;
+  justify-content:center;
+  height: 400px;
+}
+.imgcontent{
+  width: 100%;
+  display:flex;
+  align-items: center;
+  justify-content:center;
+  margin-top: 4px;
+}
+
+.songImg {
+  margin:20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 320px;
+  height: 320px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 0px; 
+}
+
+.xuanzhuan{
+  animation: play 10s linear infinite;
+}
+
+.songEn{
+  width: 100%;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  color:black;
+  font-size: 12pt;
+
+}
+
+.aboutcontent{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+}
+.songtxt{
+  width: 90%;
+  display: flex;
+  justify-content:flex-start;
+  align-items: center;
+  color: #ea4961;
+  font-size: 12pt;
+  margin-top: 4px;
+}
+.songabout{
+  width: 90%;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  color:white;
+  font-size: 12pt;
+  line-height: 20pt;
+  text-align: justify;
+}
+
+.timeprogress {
+  width: 100%;
+  margin-top: 10px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.timeprogress .currentTime {
+  flex: 1 1 15%;
+  font-size: 10pt;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timebg {
+  flex: 1 1 70%;
+  font-size: 10pt;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 2px;
+  background: black;
+}
+
+.timeprogress .totalTime {
+  flex: 1 1 15%;
+  font-size: 10pt;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progressbg {
+  background: #ea4961;
+  height: 2px;
+}
+
+.toolsSeg {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  z-index:100;
+}
+
+.toolsSeg .leftTool {
+  flex: 1 1 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toolsSeg .centerTool {
+  flex: 1 1 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toolsSeg .rightTool {
+  flex: 1 1 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.foot {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  position: fixed;
+  bottom: 0px;
+}
+
+.tools {
+  width: 100%;
+  display: flex;
+  height: 50px;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.tools .share {
+  margin-top: 3px;
+}
+
+.footline {
+  width: 100%;
+  height: 1px;
+}
+
+@keyframes play{
+    0%{transform: rotate(0deg);}
+    100%{transform: rotate(360deg);}
+}
+
+.BR{
+  
+}

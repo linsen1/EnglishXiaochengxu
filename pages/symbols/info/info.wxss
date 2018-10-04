@@ -245,7 +245,7 @@
 }
 .symbolSentence .Sentenceinfo{
   width: 100%;
-  height: 60px;
+  
   display: flex;
 }
 .Sentenceinfo .sentencecontent{
@@ -340,8 +340,10 @@
   align-items: center;
 }
 .tools .share{
- margin-top:16px;
-
+display: flex;
+align-items: center;
+justify-content: center;
+margin-top: 15px;
 }
 
 .footline {

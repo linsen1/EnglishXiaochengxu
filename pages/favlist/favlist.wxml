@@ -4,7 +4,7 @@
 
   <view class='myinfo' bindtap='gomysentence'>
     <view class='my_ico'>
-      <image src='/images/nav/lishi.png' style="width:24px" mode='widthFix'></image>
+      <image src='/images/nav/sentence.png' style="width:24px" mode='widthFix'></image>
     </view>
     <view class='my_txt'>
       名句
@@ -15,7 +15,7 @@
   </view>
   <view class='myinfo' bindtap='gomyarticle'>
     <view class='my_ico'>
-      <image src='/images/nav/article.png' style="width:24px" mode='widthFix'></image>
+      <image src='/images/nav/article.png' style="width:20px" mode='widthFix'></image>
     </view>
     <view class='my_txt'>
       美文

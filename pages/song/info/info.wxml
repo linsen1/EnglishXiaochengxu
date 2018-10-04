@@ -7,7 +7,7 @@
   <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" class='songContent'>
     <swiper-item>
       <view class="songImg">
-        <image src='{{songImgBig}}' mode='widthFix' style='width:540rpx' background-size="cover"></image>
+        <image src='{{songImgBig}}' mode='widthFix' style='width:70%'></image>
       </view>
     </swiper-item>
     <swiper-item>

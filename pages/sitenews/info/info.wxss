@@ -1,0 +1,64 @@
+/* pages/sitenews/info/info.wxss */
+
+.container {
+  margin: 0 auto;
+  width: 98%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.newtitle{
+  display:flex;
+  width: 100%;
+  background: white;
+  align-items:center;
+  font-size: 16pt;
+  padding: 10px 4px;
+}
+.newsinfo{
+  padding-bottom: 14px;
+  padding-left: 4px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: white;
+  font-size: 12pt;
+  width: 100%;
+}
+.newsinfo .author{
+  width: 25%;
+  color: #ea4961;
+  display: flex;
+  justify-content:center;
+   align-items:center;
+}
+.newsinfo .type{
+  width: 20%;
+  color: #888; 
+  display: flex;
+  justify-content:center;
+   align-items:center;
+}
+.newsinfo .pubdate{
+  width: 55%;
+  color: #888;
+  display: flex;
+  align-items:flex-start;
+}
+.newspic {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  width: 100%;
+  
+}
+.newscontent{
+ display: flex;
+ padding: 10px 2px;
+ align-items: center;
+ background: white;
+ width:100%;
+ font-size: 14pt;
+ text-align: justify;
+}

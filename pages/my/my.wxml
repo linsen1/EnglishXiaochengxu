@@ -3,21 +3,21 @@
 
   <view>
     <view wx:if="{{!hasUserInfo && canIUse}}" class="userinfo">
-    <button  open-type='getUserInfo' plain='true' style="{{avatarUrl}}" class='infoButton' bindgetuserinfo='getUserInfo'>
-    </button>
-    <image class="userinfo-avatar" src="{{avatarUrl}}" background-size="cover" style='width:128rpx' mode='widthFix'></image>
-    <text class="userinfo-nickname">{{nickName}}</text>
+      <button open-type='getUserInfo' plain='true' style="{{avatarUrl}}" class='infoButton' bindgetuserinfo='getUserInfo'>
+      </button>
+      <image class="userinfo-avatar" src="{{avatarUrl}}" background-size="cover" style='width:128rpx' mode='widthFix'></image>
+      <text class="userinfo-nickname">{{nickName}}</text>
     </view>
     <block wx:else>
-     <view class="userinfo">
-     <image class="userinfo-avatar" src="{{avatarUrl}}" background-size="cover" style='width:128rpx' mode='widthFix'></image>
-     <text class="userinfo-nickname">{{nickName}}</text>
-     </view>
+      <view class="userinfo">
+        <image class="userinfo-avatar" src="{{avatarUrl}}" background-size="cover" style='width:128rpx' mode='widthFix'></image>
+        <text class="userinfo-nickname">{{nickName}}</text>
+      </view>
     </block>
   </view>
   <view class='BR'></view>
 
-    <view class='myinfo' bindtap='giveMoney'>
+  <view class='myinfo' bindtap='giveMoney'>
     <view class='my_ico'>
       <image src='/images/control/money.png' style="width:26px" mode='widthFix'></image>
     </view>
@@ -40,10 +40,10 @@
     </view>
   </view>
 
-<view class='BR'></view>
-<view class='BR'></view>
-<view class='BR'></view>
-  <view class='myinfo' bindtap='gofilm'>
+  <view class='BR'></view>
+  <view class='BR'></view>
+  <view class='BR'></view>
+  <view class='myinfo' bindtap='gofilm' hidden='{{showFilm}}'>
     <view class='my_ico'>
       <image src='/images/nav/film.png' style="width:22px" mode='widthFix'></image>
     </view>
@@ -54,7 +54,23 @@
       <image src='/images/control/jiantou.png' style="width:24px" mode='widthFix'></image>
     </view>
   </view>
-    <view class='myinfo' bindtap='gosymbols'>
+
+  <view class='myinfo' bindtap='gomusic' hidden='{{showFilm}}'>
+    <view class='my_ico'>
+      <image src='/images/nav/music.png' style="width:22px" mode='widthFix'></image>
+    </view>
+    <view class='my_txt'>
+      歌曲
+    </view>
+    <view class='my_jiantou'>
+      <image src='/images/control/jiantou.png' style="width:24px" mode='widthFix'></image>
+    </view>
+  </view>
+
+
+
+
+  <view class='myinfo' bindtap='gosymbols'>
     <view class='my_ico'>
       <image src='/images/control/yinbiao.png' style="width:26px" mode='widthFix'></image>
     </view>
@@ -69,7 +85,7 @@
 
   <view class='BR'></view>
   <view class='BR'></view>
- 
+
   <view>
     <button open-type="contact">
       意见反馈

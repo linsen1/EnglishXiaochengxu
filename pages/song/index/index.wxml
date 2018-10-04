@@ -1,0 +1,34 @@
+<!--pages/song/index/index.wxml-->
+<view class='container'>
+
+  <view wx:if="{{showFilm==''}}">
+    <view class='symbolSongInfo'>
+      <block wx:for="{{info}}" wx:key="{{item.id}}">
+        <view class='songContent' data-id="{{item.id}}" bindtap='goSongInfo'>
+          <view class='songimg'>
+            <image src="{{item.songImgSmall}}" mode='widthFix' style='width:76px'> </image>
+          </view>
+
+          <view class='songBaseInfo'>
+            <view class='songTitle'>
+              <text>{{item.songName}}</text>
+            </view>
+            <view class='songAuthor'>
+              <text>{{item.singer}}</text>
+            </view>
+
+          </view>
+          <view class='songInfo'>
+            <image src='/images/control/jiantou.png' style="width:24px" mode='widthFix'></image>
+          </view>
+
+        </view>
+        <view class='line'></view>
+      </block>
+      <view class='loadingMore' hidden='{{loadingMoreHidden}}'>{{loadingMore}}</view>
+    </view>
+  </view>
+  <view wx:if="{{showFilm}}" style='margin-top:10px;text-align:center;font-size:14pt;'>
+    各位亲们，由于审核政策原因，此栏目暂时关闭，请关注“每天读些英文”公众号
+  </view>
+</view>

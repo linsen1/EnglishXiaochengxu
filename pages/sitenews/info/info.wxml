@@ -1,0 +1,31 @@
+<!--pages/sitenews/info/info.wxml-->
+<view class="container">
+
+  <view class='newtitle'>
+    <text>{{title}}</text>
+  </view>
+  <view class='newsinfo'>
+    <view class='author'>
+      <text>{{author}}</text>
+    </view>
+    <view class='type'>
+      <block wx:if="{{types==0}}">
+        <text>站点公告</text>
+      </block>
+    </view>
+    <view class='pubdate'>
+      <text>{{created_at}}</text>
+    </view>
+  </view>
+
+
+  <view class='newspic'>
+    <image src='{{bannerUrl}}' mode='widthFix' style='width:100%'> </image>
+  </view>
+
+  <view class='newscontent'>
+    <htmltowxml text="{{contents}}" bindWxmlTagATap="wxmlTagATap" />
+  </view>
+
+
+</view>
